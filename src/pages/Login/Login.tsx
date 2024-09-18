@@ -2,15 +2,53 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import iconImage from 'src/assets/images/icon-signin.svg'
 import logoLight from 'src/assets/images/logo-light.png'
+import { Omit } from 'lodash'
+import { schema, Schema } from 'src/utils/rules'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useMutation } from '@tanstack/react-query'
+import { login } from 'src/apis/auth.api'
+import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
+import { ResponseApi } from 'src/types/utils.type'
+import Input from 'src/components/Input'
+
+type FormData = Omit<Schema, 'confirm_password'>
+const loginSchema = schema.omit(['confirm_password'])
 
 export default function Register() {
   const {
     register,
+    setError,
     handleSubmit,
     formState: { errors }
-  } = useForm()
+  } = useForm<FormData>({
+    resolver: yupResolver(loginSchema)
+  })
 
-  const onSubmit = handleSubmit((data) => {})
+  const loginMutation = useMutation({
+    mutationFn: (body: Omit<FormData, 'confirm_password'>) => login(body)
+  })
+
+  const onSubmit = handleSubmit((data) => {
+    loginMutation.mutate(data, {
+      onSuccess: (data) => {
+        console.log(data)
+      },
+      onError: (error) => {
+        if (isAxiosUnprocessableEntityError<ResponseApi<FormData>>(error)) {
+          const formError = error.response?.data.data
+
+          if (formError) {
+            Object.keys(formError).forEach((key) => {
+              setError(key as keyof FormData, {
+                message: formError[key as keyof FormData],
+                type: 'Server'
+              })
+            })
+          }
+        }
+      }
+    })
+  })
 
   return (
     <div className='bg-white'>
@@ -27,31 +65,29 @@ export default function Register() {
             <img src={logoLight} alt='Logo Light' className='h-8 w-[190px]' />
           </Link>
 
-          <form className='mt-12 w-full text-center' onSubmit={onSubmit}>
+          <form className='mt-12 w-full text-center' onSubmit={onSubmit} noValidate>
             <div className='text-3xl font-medium'>Đăng nhập</div>
 
             <div className='mt-2 text-sm font-medium'>Chào mừng bạn quay lại đăng nhập. </div>
 
-            <div className='mt-14'>
-              <input
-                type='email'
-                name='email'
-                className='w-[460px] rounded-lg border border-gray-300 p-3 outline-none focus:border-gray-500 focus:shadow-sm'
-                placeholder='Email'
-              />
-              <div className='mt-2 min-h-[1rem] text-sm text-red-600'></div>
-            </div>
+            <Input
+              name='email'
+              register={register}
+              type='email'
+              className='mt-14'
+              errorMessage={errors.email?.message}
+              placeholder='Email'
+            />
 
-            <div className='mt-3'>
-              <input
-                type='password'
-                name='password'
-                autoComplete='on'
-                className='w-[460px] rounded-lg border border-gray-300 p-3 outline-none focus:border-gray-500 focus:shadow-sm'
-                placeholder='Mật khẩu'
-              />
-              <div className='mt-2 min-h-[1rem] text-sm text-red-600'></div>
-            </div>
+            <Input
+              name='password'
+              register={register}
+              type='password'
+              className='mt-3'
+              errorMessage={errors.password?.message}
+              placeholder='Password'
+              autoComplete='on'
+            />
 
             <div className='mt-9'>
               <button
