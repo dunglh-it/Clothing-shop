@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-import flagVietnam from 'src/assets/images/flag-vietnam.png'
+import flagVietNam from 'src/assets/images/flag-vietnam.png'
+import flagEnglish from 'src/assets/images/flag-english.png'
 import logoLight from 'src/assets/images/logo-light.png'
+import Popover from '../Popover'
 
 export default function Header() {
   return (
@@ -37,8 +39,24 @@ export default function Header() {
             </svg>
           </div>
 
-          <div className='ml-4 flex cursor-pointer items-center py-1 hover:opacity-75'>
-            <img src={flagVietnam} alt='Viet Nam' className='h-5 w-5 object-cover' />
+          <Popover
+            className='ml-4 flex cursor-pointer items-center py-1 hover:opacity-75'
+            renderPopover={
+              <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
+                <div className='flex flex-col'>
+                  <button className='flex items-center px-3 py-2 hover:bg-slate-100 hover:text-lightBlue'>
+                    <img src={flagVietNam} alt='Viet Nam' className='mr-2 h-5 w-5 object-cover' />
+                    <span>Tiếng Việt</span>
+                  </button>
+                  <button className='flex items-center px-3 py-2 pt-2 hover:bg-slate-100 hover:text-lightBlue'>
+                    <img src={flagEnglish} alt='English' className='mr-2 h-5 w-5 object-cover' />
+                    <span>English</span>
+                  </button>
+                </div>
+              </div>
+            }
+          >
+            <img src={flagVietNam} alt='Viet Nam' className='h-5 w-5 object-cover' />
             <span className='mx-1'>Tiếng Việt</span>
 
             <svg
@@ -51,9 +69,30 @@ export default function Header() {
             >
               <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' />
             </svg>
-          </div>
+          </Popover>
 
-          <div className='ml-6 flex cursor-pointer items-center py-1 hover:opacity-75'>
+          <Popover
+            className='ml-6 flex cursor-pointer items-center py-1 hover:opacity-75'
+            renderPopover={
+              <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
+                <Link
+                  to='/'
+                  className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                >
+                  Tài khoản của tôi
+                </Link>
+                <Link
+                  to='/'
+                  className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                >
+                  Đơn mua
+                </Link>
+                <button className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'>
+                  Đăng xuất
+                </button>
+              </div>
+            }
+          >
             <div className='mr-2 h-6 w-6 flex-shrink-0'>
               <img
                 src='https://cf.shopee.vn/file/d04ea22afab6e6d250a370d7ccc2e675_tn'
@@ -62,7 +101,7 @@ export default function Header() {
               />
             </div>
             <div>Duy Nghia</div>
-          </div>
+          </Popover>
         </div>
 
         <div className='mt-4 grid grid-cols-12 items-center gap-12 pb-6'>
