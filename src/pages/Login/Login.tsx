@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import iconImage from 'src/assets/images/icon-signin.svg'
 import logoLight from 'src/assets/images/logo-light.png'
@@ -8,13 +8,19 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { login } from 'src/apis/auth.api'
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
-import { ResponseApi } from 'src/types/utils.type'
+import { ErrorResponse } from 'src/types/utils.type'
 import Input from 'src/components/Input'
+import { useContext } from 'react'
+import { AppContext } from 'src/contexts/app.context'
+import Button from 'src/components/Button'
 
 type FormData = Omit<Schema, 'confirm_password'>
 const loginSchema = schema.omit(['confirm_password'])
 
 export default function Register() {
+  const { setIsAuthenticated } = useContext(AppContext)
+  const navigate = useNavigate()
+
   const {
     register,
     setError,
@@ -30,11 +36,12 @@ export default function Register() {
 
   const onSubmit = handleSubmit((data) => {
     loginMutation.mutate(data, {
-      onSuccess: (data) => {
-        console.log(data)
+      onSuccess: () => {
+        setIsAuthenticated(true)
+        navigate('/')
       },
       onError: (error) => {
-        if (isAxiosUnprocessableEntityError<ResponseApi<FormData>>(error)) {
+        if (isAxiosUnprocessableEntityError<ErrorResponse<FormData>>(error)) {
           const formError = error.response?.data.data
 
           if (formError) {
@@ -90,12 +97,14 @@ export default function Register() {
             />
 
             <div className='mt-9'>
-              <button
+              <Button
                 type='submit'
                 className='text-md w-[460px] rounded-lg bg-yellow px-2 py-4 text-center font-medium uppercase text-black hover:bg-yellow/70'
+                isLoading={loginMutation.isLoading}
+                disabled={loginMutation.isLoading}
               >
                 Đăng nhập
-              </button>
+              </Button>
             </div>
             <div className='mt-8 flex items-center justify-center'>
               <span className='text-gray-400'>Bạn chưa có tài khoản?</span>

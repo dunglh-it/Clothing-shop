@@ -3,8 +3,25 @@ import flagVietNam from 'src/assets/images/flag-vietnam.png'
 import flagEnglish from 'src/assets/images/flag-english.png'
 import logoLight from 'src/assets/images/logo-light.png'
 import Popover from '../Popover'
+import { useContext } from 'react'
+import { AppContext } from 'src/contexts/app.context'
+import { useMutation } from '@tanstack/react-query'
+import { logout } from 'src/apis/auth.api'
 
 export default function Header() {
+  const { setIsAuthenticated, isAuthenticated } = useContext(AppContext)
+
+  const logoutMutation = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      setIsAuthenticated(false)
+    }
+  })
+
+  const handleLogout = () => {
+    logoutMutation.mutate()
+  }
+
   return (
     <div className='bg-gray-100'>
       <div className='container'>
@@ -71,37 +88,47 @@ export default function Header() {
             </svg>
           </Popover>
 
-          <Popover
-            className='ml-6 flex cursor-pointer items-center py-1 hover:opacity-75'
-            renderPopover={
-              <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
-                <Link
-                  to='/'
-                  className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
-                >
-                  Tài khoản của tôi
-                </Link>
-                <Link
-                  to='/'
-                  className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
-                >
-                  Đơn mua
-                </Link>
-                <button className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'>
-                  Đăng xuất
-                </button>
-              </div>
-            }
-          >
-            <div className='mr-2 h-6 w-6 flex-shrink-0'>
-              <img
-                src='https://cf.shopee.vn/file/d04ea22afab6e6d250a370d7ccc2e675_tn'
-                alt='avatar'
-                className='h-full w-full rounded-full object-cover'
-              />
+          {isAuthenticated && (
+            <Popover
+              className='ml-6 flex cursor-pointer items-center py-1 hover:opacity-75'
+              renderPopover={
+                <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
+                  <Link
+                    to='/profile'
+                    className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                  >
+                    Tài khoản của tôi
+                  </Link>
+                  <Link
+                    to='/'
+                    className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                  >
+                    Đơn mua
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                  >
+                    Đăng xuất
+                  </button>
+                </div>
+              }
+            >
+              <div>duthanhduoc</div>
+            </Popover>
+          )}
+
+          {!isAuthenticated && (
+            <div className='flex items-center'>
+              <Link to='/register' className='mx-3 capitalize hover:text-lightBlue/70'>
+                Đăng ký
+              </Link>
+              <div className='h-4 border-r-[1px] border-r-lightBlue/40' />
+              <Link to='/login' className='mx-3 capitalize hover:text-lightBlue/70'>
+                Đăng nhập
+              </Link>
             </div>
-            <div>Duy Nghia</div>
-          </Popover>
+          )}
         </div>
 
         <div className='mt-4 grid grid-cols-12 items-center gap-12 pb-6'>
