@@ -6,14 +6,14 @@ import Popover from '../Popover'
 import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import { useMutation } from '@tanstack/react-query'
-import { logout } from 'src/apis/auth.api'
+import { authApi } from 'src/apis/auth.api'
 import path from 'src/constants/path'
 
 export default function Header() {
   const { setIsAuthenticated, isAuthenticated, setProfile, profile } = useContext(AppContext)
 
   const logoutMutation = useMutation({
-    mutationFn: logout,
+    mutationFn: authApi.logout,
     onSuccess: () => {
       setIsAuthenticated(false)
       setProfile(null)
@@ -269,7 +269,7 @@ export default function Header() {
                 </div>
               }
             >
-              <Link to='/'>
+              <Link to='/' className='flex items-center justify-center'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'

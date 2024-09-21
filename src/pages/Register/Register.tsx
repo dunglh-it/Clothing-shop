@@ -5,7 +5,7 @@ import logoLight from 'src/assets/images/logo-light.png'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema, Schema } from 'src/utils/rules'
 import Input from 'src/components/Input'
-import { registerAccount } from 'src/apis/auth.api'
+import { authApi } from 'src/apis/auth.api'
 import { useMutation } from '@tanstack/react-query'
 import { omit, Omit } from 'lodash'
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
@@ -30,7 +30,7 @@ export default function Register() {
   })
 
   const registerAccountMutation = useMutation({
-    mutationFn: (body: Omit<FormData, 'confirm_password'>) => registerAccount(body)
+    mutationFn: (body: Omit<FormData, 'confirm_password'>) => authApi.registerAccount(body)
   })
 
   const onSubmit = handleSubmit((data) => {
@@ -84,6 +84,7 @@ export default function Register() {
               register={register}
               type='email'
               className='mt-14'
+              classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
               errorMessage={errors.email?.message}
               placeholder='Email'
             />
@@ -93,6 +94,7 @@ export default function Register() {
               register={register}
               type='password'
               className='mt-3'
+              classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
               errorMessage={errors.password?.message}
               placeholder='Mật khẩu'
               autoComplete='on'
@@ -103,15 +105,16 @@ export default function Register() {
               register={register}
               type='password'
               className='mt-3'
+              classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
               errorMessage={errors.confirm_password?.message}
               placeholder='Nhập lại mật khẩu'
               autoComplete='on'
             />
 
-            <div className='mt-9'>
+            <div className='mt-9 flex items-center justify-center'>
               <Button
                 type='submit'
-                className='text-md w-[460px] rounded-lg bg-yellow px-2 py-4 text-center font-medium uppercase text-black hover:bg-yellow/70'
+                className='text-md flex w-[460px] items-center justify-center rounded-lg bg-lightBlue px-2 py-4 text-center font-medium uppercase text-white hover:bg-lightBlue/70'
                 isLoading={registerAccountMutation.isLoading}
                 disabled={registerAccountMutation.isLoading}
               >
