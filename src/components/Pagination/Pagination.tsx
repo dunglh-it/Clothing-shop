@@ -1,14 +1,18 @@
 import classNames from 'classnames'
+import { createSearchParams, Link } from 'react-router-dom'
+import path from 'src/constants/path'
+import { QueryConfig } from 'src/pages/ProductList/ProductList'
 
 interface Props {
-  page: number
-  setPage: React.Dispatch<React.SetStateAction<number>>
+  queryConfig: QueryConfig
   pageSize: number
 }
 
 const RANGE = 2
 
-export default function Pagination({ page, setPage, pageSize }: Props) {
+export default function Pagination({ queryConfig, pageSize }: Props) {
+  const page = Number(queryConfig.page)
+
   const renderPagination = () => {
     let dotAfter = false
     let dotBefore = false
@@ -18,9 +22,9 @@ export default function Pagination({ page, setPage, pageSize }: Props) {
         dotBefore = true
 
         return (
-          <button key={index} className='mx-2 rounded border bg-white px-3 py-2 shadow-sm'>
+          <span key={index} className='mx-2 rounded border bg-white px-3 py-2 shadow-sm'>
             ...
-          </button>
+          </span>
         )
       }
 
@@ -32,9 +36,9 @@ export default function Pagination({ page, setPage, pageSize }: Props) {
         dotAfter = true
 
         return (
-          <button key={index} className='mx-2 rounded border bg-white px-3 py-2 shadow-sm'>
+          <span key={index} className='mx-2 rounded border bg-white px-3 py-2 shadow-sm'>
             ...
-          </button>
+          </span>
         )
       }
 
@@ -59,16 +63,22 @@ export default function Pagination({ page, setPage, pageSize }: Props) {
         }
 
         return (
-          <button
+          <Link
+            to={{
+              pathname: path.product,
+              search: createSearchParams({
+                ...queryConfig,
+                page: pageNumber.toString()
+              }).toString()
+            }}
             key={index}
             className={classNames('mx-2 cursor-pointer rounded border bg-white px-3 py-2 shadow-md', {
               'border-lightBlue': pageNumber === page,
               'border-transparent': pageNumber !== page
             })}
-            onClick={() => setPage(pageNumber)}
           >
             {pageNumber}
-          </button>
+          </Link>
         )
       })
   }
