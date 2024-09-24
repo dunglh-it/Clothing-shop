@@ -1,15 +1,20 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import DOMPurify from 'dompurify'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import productApi from 'src/apis/product.api'
-import InputNumber from 'src/components/InputNumber'
 import ProductRating from 'src/components/ProductRating'
 import { ProductListConfig, Product as ProductType } from 'src/types/product.type'
 import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from 'src/utils/utils'
 import Product from '../ProductList/components/Product'
+import QuantityController from 'src/components/QuantityController'
+import purchaseApi from 'src/apis/purchase.api'
+import { toast } from 'react-toastify'
+import { queryClient } from 'src/main'
+import { purchaseStatus } from 'src/constants/purchase'
 
 export default function ProductDetail() {
+  const [buyCount, setBuyCount] = useState(1)
   const { nameId } = useParams()
   const id = getIdFromNameId(nameId as string)
 
@@ -40,6 +45,8 @@ export default function ProductDetail() {
     staleTime: 3 * 60 * 1000,
     enabled: Boolean(product)
   })
+
+  const addToCartMutation = useMutation(purchaseApi.addToCart)
 
   useEffect(() => {
     if (product && product.images.length > 0) {
@@ -80,8 +87,37 @@ export default function ProductDetail() {
     image.style.top = top + 'px'
     image.style.left = left + 'px'
   }
+
   const handleRemoveZoom = () => {
     imageRef.current?.removeAttribute('style')
+  }
+
+  const handleBuyCount = (value: number) => {
+    setBuyCount(value)
+  }
+
+  const addToCart = () => {
+    addToCartMutation.mutate(
+      { buy_count: buyCount, product_id: product?._id as string },
+      {
+        onSuccess: (data) => {
+          const message = data?.data?.message || 'Thêm vào giỏ hàng thành công!'
+
+          toast.success(message, {
+            autoClose: 1000
+          })
+
+          queryClient.invalidateQueries({
+            queryKey: [
+              'purchases',
+              {
+                status: purchaseStatus.inCart
+              }
+            ]
+          })
+        }
+      }
+    )
   }
 
   if (!product) return null
@@ -180,44 +216,22 @@ export default function ProductDetail() {
                 </div>
                 <div className='mt-8 flex items-center'>
                   <div className='capitalize text-gray-500'>Số lượng</div>
-                  <div className='ml-10 flex items-center'>
-                    <button className='flex h-8 w-8 items-center justify-center rounded-l-sm border border-gray-300 text-gray-600'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth={1.5}
-                        stroke='currentColor'
-                        className='h-4 w-4'
-                      >
-                        <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 12h-15' />
-                      </svg>
-                    </button>
 
-                    <InputNumber
-                      value={1}
-                      className=''
-                      classNameError='hidden'
-                      classNameInput='h-8 w-14 border-t border-b border-gray-300 p-1 text-center outline-none'
-                    />
+                  <QuantityController
+                    onDecrease={handleBuyCount}
+                    onIncrease={handleBuyCount}
+                    onType={handleBuyCount}
+                    value={buyCount}
+                    max={product.quantity}
+                  />
 
-                    <button className='flex h-8 w-8 items-center justify-center rounded-r-sm border border-gray-300 text-gray-600'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth={1.5}
-                        stroke='currentColor'
-                        className='h-4 w-4'
-                      >
-                        <path strokeLinecap='round' strokeLinejoin='round' d='M12 4.5v15m7.5-7.5h-15' />
-                      </svg>
-                    </button>
-                  </div>
                   <div className='ml-6 text-sm text-gray-500'>{product.quantity} sản phẩm có sẵn</div>
                 </div>
                 <div className='mt-8 flex items-center'>
-                  <button className='text-orange flex h-12 items-center justify-center rounded-sm border border-lightBlue bg-lightBlue/10 px-5 capitalize shadow-sm hover:bg-lightBlue/5'>
+                  <button
+                    className='text-orange flex h-12 items-center justify-center rounded-sm border border-lightBlue bg-lightBlue/10 px-5 capitalize shadow-sm hover:bg-lightBlue/5'
+                    onClick={addToCart}
+                  >
                     <svg
                       enableBackground='new 0 0 15 15'
                       viewBox='0 0 15 15'
