@@ -167,7 +167,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
                     page: (page + 1).toString()
                   }).toString()
                 }}
-                className='flex h-8 w-9  items-center justify-center rounded-bl-sm rounded-tl-sm bg-white  shadow hover:bg-slate-100'
+                className='flex h-8 w-9  items-center justify-center rounded-br-sm rounded-tr-sm bg-white  shadow hover:bg-lightBlue hover:text-white'
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

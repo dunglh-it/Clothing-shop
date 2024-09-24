@@ -1,13 +1,13 @@
 import useQueryParams from 'src/hooks/useQueryParams'
-import AsideFilter from './AsideFilter'
-import Product from '../Product/Product'
-import SortProductList from '../SortProductList'
+import Product from './components/Product/Product'
 import { useQuery } from '@tanstack/react-query'
 import productApi from 'src/apis/product.api'
 import Pagination from 'src/components/Pagination'
 import { ProductListConfig } from 'src/types/product.type'
 import { isUndefined, omitBy } from 'lodash'
 import categoryApi from 'src/apis/category.api'
+import AsideFilter from './components/AsideFilter'
+import SortProductList from './components/SortProductList'
 
 export type QueryConfig = {
   [key in keyof ProductListConfig]: string

@@ -25,7 +25,7 @@ export default function Header() {
   }
 
   return (
-    <div className='bg-gray-100'>
+    <div className='bg-gray-200 shadow-md'>
       <div className='container'>
         <div className='flex justify-end'>
           <div className='flex cursor-pointer items-center hover:opacity-75'>
