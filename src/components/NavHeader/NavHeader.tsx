@@ -3,8 +3,7 @@ import Popover from '../Popover'
 import { AppContext } from 'src/contexts/app.context'
 import { Link } from 'react-router-dom'
 import path from 'src/constants/path'
-import { useMutation } from '@tanstack/react-query'
-import { queryClient } from 'src/main'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { authApi } from 'src/apis/auth.api'
 import { purchaseStatus } from 'src/constants/purchase'
 import flagVietNam from 'src/assets/images/flag-vietnam.png'
@@ -12,6 +11,8 @@ import flagEnglish from 'src/assets/images/flag-english.png'
 
 export default function NavHeader() {
   const { setIsAuthenticated, isAuthenticated, setProfile, profile } = useContext(AppContext)
+  const queryClient = useQueryClient()
+
   const logoutMutation = useMutation({
     mutationFn: authApi.logout,
     onSuccess: () => {

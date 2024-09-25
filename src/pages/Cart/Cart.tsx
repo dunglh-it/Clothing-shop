@@ -163,7 +163,7 @@ export default function Cart() {
                       <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                         <input
                           type='checkbox'
-                          className='h-5 w-5 accent-lightBlue'
+                          className='h-5 w-5 cursor-pointer accent-lightBlue'
                           checked={isAllChecked}
                           onChange={handleCheckAll}
                         />
@@ -194,7 +194,7 @@ export default function Cart() {
                             <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                               <input
                                 type='checkbox'
-                                className='h-5 w-5 accent-lightBlue'
+                                className='h-5 w-5 cursor-pointer accent-lightBlue'
                                 checked={purchase.checked}
                                 onChange={handleCheck(index)}
                               />
@@ -287,7 +287,7 @@ export default function Cart() {
                 <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                   <input
                     type='checkbox'
-                    className='h-5 w-5 accent-lightBlue'
+                    className='h-5 w-5 cursor-pointer accent-lightBlue'
                     checked={isAllChecked}
                     onChange={handleCheckAll}
                   />
