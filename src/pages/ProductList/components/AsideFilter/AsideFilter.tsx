@@ -8,7 +8,7 @@ import { schema, Schema } from 'src/utils/rules'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import InputNumber from 'src/components/InputNumber'
-import { omit } from 'lodash'
+import omit from 'lodash/omit'
 import RatingStars from '../RatingStars'
 import { QueryConfig } from 'src/hooks/useQueryConfig'
 
