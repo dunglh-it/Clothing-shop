@@ -94,6 +94,7 @@ export default function Register() {
               type='password'
               className='mt-3'
               classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
+              classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
               errorMessage={errors.password?.message}
               placeholder='Password'
               autoComplete='on'
