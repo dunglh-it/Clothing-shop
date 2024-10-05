@@ -14,6 +14,7 @@ import { Purchase } from 'src/types/purchase.type'
 import { formatCurrency, generateNameId } from 'src/utils/utils'
 import noproduct from 'src/assets/images/no-product.png'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 export default function Cart() {
   const { t } = useTranslation(['cart'])
@@ -155,6 +156,11 @@ export default function Cart() {
 
   return (
     <div className='bg-gray-100 py-16'>
+      <Helmet>
+        <title>{t('cart.cart shop')} | Clothing Shop</title>
+        <meta name='description' content='Giỏ hàng của bạn trong Clothing Shop' />
+      </Helmet>
+
       <div className='container'>
         {extendedPurchases.length > 0 ? (
           <>

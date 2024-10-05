@@ -2,9 +2,13 @@
   "login": {
     "my account": "Tài khoản của tôi",
     "my purchase": "Đơn mua",
-    "logout": "Đăng xuất"
+    "logout": "Đăng xuất",
+    "brand value": "Giá trị thương hiệu cao cấp nhất, sản phẩm chất lượng cao và dịch vụ sáng tạo"
   },
 
   "sign in": "Đăng nhập",
-  "sign up": "Đăng ký"
+  "sign up": "Đăng ký",
+  "account yet": "Bạn chưa có tài khoản",
+  "create shop": "Hãy tạo tài khoản của bạn và Mua sắm",
+  "welcome": "Chào mừng bạn quay lại đăng nhập"
 }

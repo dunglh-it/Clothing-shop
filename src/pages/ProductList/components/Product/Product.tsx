@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import ProductRating from 'src/components/ProductRating'
@@ -14,6 +15,11 @@ export default function Product({ product }: Props) {
 
   return (
     <Link to={`${path.home}${generateNameId({ name: product.name, id: product._id })}`}>
+      <Helmet>
+        <title>{t('product.items')} | Clothing Shop</title>
+        <meta name='description' content='Danh sách sản phẩm của Clothing Shop' />
+      </Helmet>
+
       <div className='overflow-hidden rounded-sm bg-white shadow-md transition-transform duration-100 hover:translate-y-[-0.04rem] hover:text-lightBlue hover:shadow-lg'>
         <div className='relative w-full pt-[100%]'>
           <img

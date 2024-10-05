@@ -13,11 +13,15 @@ import Input from 'src/components/Input'
 import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import Button from 'src/components/Button'
+import { Helmet } from 'react-helmet-async'
+import { useTranslation } from 'react-i18next'
 
 type FormData = Pick<Schema, 'email' | 'password'>
 const loginSchema = schema.pick(['email', 'password'])
 
-export default function Register() {
+export default function Login() {
+  const { t } = useTranslation(['account', 'profile'])
+
   const { setIsAuthenticated, setProfile } = useContext(AppContext)
   const navigate = useNavigate()
 
@@ -60,12 +64,15 @@ export default function Register() {
 
   return (
     <div className='bg-white'>
+      <Helmet>
+        <title>{t('sign in')} | Clothing Shop</title>
+        <meta name='description' content='Đăng nhập vào dự án Clothing Shop' />
+      </Helmet>
+
       <div className='grid h-screen grid-cols-1 lg:grid-cols-12'>
         <div className='flex flex-col items-center justify-center bg-gray-50 lg:col-span-6'>
           <img src={iconImage} alt='Sign Up' />
-          <div className='lg:mt-12 lg:w-[412px] lg:text-center lg:text-lg lg:font-medium'>
-            Giá trị thương hiệu cao cấp nhất, sản phẩm chất lượng cao và dịch vụ sáng tạo
-          </div>
+          <div className='lg:mt-12 lg:w-[412px] lg:text-center lg:text-lg lg:font-medium'>{t('login.brand value')}</div>
         </div>
 
         <div className='flex flex-col items-center justify-center lg:col-span-6'>
@@ -74,9 +81,9 @@ export default function Register() {
           </Link>
 
           <form className='mt-12 w-full text-center' onSubmit={onSubmit} noValidate>
-            <div className='text-3xl font-medium'>Đăng nhập</div>
+            <div className='text-3xl font-medium'>{t('sign in')}</div>
 
-            <div className='mt-2 text-sm font-medium'>Chào mừng bạn quay lại đăng nhập. </div>
+            <div className='mb-6 mt-2 text-sm font-medium'>{t('welcome')}.</div>
 
             <Input
               name='email'
@@ -94,9 +101,9 @@ export default function Register() {
               type='password'
               className='mt-3'
               classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
-              classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
+              classNameEye='absolute right-[170px] h-5 w-5 cursor-pointer top-[12px]'
               errorMessage={errors.password?.message}
-              placeholder='Password'
+              placeholder={t('profile:password.pass')}
               autoComplete='on'
             />
 
@@ -107,13 +114,13 @@ export default function Register() {
                 isLoading={loginMutation.isLoading}
                 disabled={loginMutation.isLoading}
               >
-                Đăng nhập
+                {t('sign in')}
               </Button>
             </div>
             <div className='mt-8 flex items-center justify-center'>
-              <span className='text-gray-400'>Bạn chưa có tài khoản?</span>
+              <span className='text-gray-400'>{t('account yet')}?</span>
               <Link className='ml-1 font-medium text-blue' to='/register'>
-                Đăng ký
+                {t('sign up')}
               </Link>
             </div>
           </form>

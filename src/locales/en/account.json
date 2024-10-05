@@ -2,9 +2,13 @@
   "login": {
     "my account": "my account",
     "my purchase": "my purchase",
-    "logout": "logout"
+    "logout": "logout",
+    "brand value": "Top class brand value, high quality products and innovative services"
   },
 
   "sign in": "Sign in",
-  "sign up": "Sign up"
+  "sign up": "Sign up",
+  "account yet": "Don't have an account yet",
+  "create shop": "Create your account and Shop",
+  "welcome": "Welcome back to login"
 }

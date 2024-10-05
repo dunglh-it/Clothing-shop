@@ -13,6 +13,7 @@ import { toast } from 'react-toastify'
 import { purchaseStatus } from 'src/constants/purchase'
 import path from 'src/constants/path'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 export default function ProductDetail() {
   const { t } = useTranslation(['product'])
@@ -142,6 +143,11 @@ export default function ProductDetail() {
 
   return (
     <div className='bg-gray-50 py-6'>
+      <Helmet>
+        <title>{product.name} | Clothing Shop</title>
+        <meta name='description' content='Chi tiết sản phẩm của sản phẩm chọn' />
+      </Helmet>
+
       <div className='container'>
         <div className='rounded-md bg-white py-4 shadow-md'>
           <div className='container'>
@@ -221,7 +227,7 @@ export default function ProductDetail() {
                   <div className='mx-4 h-4 w-[1px] bg-gray-300'></div>
                   <div>
                     <span>{formatNumberToSocialStyle(product.sold)}</span>
-                    <span className='ml-1 text-gray-500'>Đã bán</span>
+                    <span className='ml-1 text-gray-500'>{t('product.sold')}</span>
                   </div>
                 </div>
 

@@ -26,6 +26,7 @@
 
   "password": {
     "manage profile information": "Manage profile information for account security",
+    "pass": "Password",
     "old password": "Old password",
     "new password": "New password",
     "re-enter the password": "Re-enter password"

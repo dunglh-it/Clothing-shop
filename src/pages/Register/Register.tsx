@@ -13,11 +13,15 @@ import { ErrorResponse } from 'src/types/utils.type'
 import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import Button from 'src/components/Button'
+import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 type FormData = Pick<Schema, 'email' | 'password' | 'confirm_password'>
 const registerSchema = schema.pick(['email', 'password', 'confirm_password'])
 
 export default function Register() {
+  const { t } = useTranslation(['account', 'profile'])
+
   const { setIsAuthenticated, setProfile } = useContext(AppContext)
   const navigate = useNavigate()
 
@@ -62,12 +66,15 @@ export default function Register() {
 
   return (
     <div className='bg-white'>
+      <Helmet>
+        <title>{t('sign up')} | Clothing Shop</title>
+        <meta name='description' content='Đăng ký để vào dự án Clothing Shop' />
+      </Helmet>
+
       <div className='grid h-screen grid-cols-1 lg:grid-cols-12'>
         <div className='flex flex-col items-center justify-center bg-gray-50 lg:col-span-6'>
           <img src={iconImage} alt='Sign Up' />
-          <div className='lg:mt-12 lg:w-[412px] lg:text-center lg:text-lg lg:font-medium'>
-            Giá trị thương hiệu cao cấp nhất, sản phẩm chất lượng cao và dịch vụ sáng tạo
-          </div>
+          <div className='lg:mt-12 lg:w-[412px] lg:text-center lg:text-lg lg:font-medium'>{t('login.brand value')}</div>
         </div>
 
         <div className='flex flex-col items-center justify-center lg:col-span-6'>
@@ -76,9 +83,9 @@ export default function Register() {
           </Link>
 
           <form className='mt-12 w-full text-center' onSubmit={onSubmit} noValidate>
-            <div className='text-3xl font-medium'>Đăng ký</div>
+            <div className='text-3xl font-medium'>{t('sign up')}</div>
 
-            <div className='mt-2 text-sm font-medium'>Hãy tạo tài khoản của bạn và Mua sắm. </div>
+            <div className='mb-6 mt-2 text-sm font-medium'>{t('create shop')}.</div>
 
             <Input
               name='email'
@@ -96,9 +103,9 @@ export default function Register() {
               type='password'
               className='mt-3'
               classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
-              classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
+              classNameEye='absolute right-[170px] h-5 w-5 cursor-pointer top-[12px]'
               errorMessage={errors.password?.message}
-              placeholder='Mật khẩu'
+              placeholder={t('profile:password.pass')}
               autoComplete='on'
             />
 
@@ -108,9 +115,9 @@ export default function Register() {
               type='password'
               className='mt-3'
               classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
-              classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
+              classNameEye='absolute right-[170px] h-5 w-5 cursor-pointer top-[12px]'
               errorMessage={errors.confirm_password?.message}
-              placeholder='Nhập lại mật khẩu'
+              placeholder={t('profile:password.re-enter the password')}
               autoComplete='on'
             />
 
@@ -121,13 +128,13 @@ export default function Register() {
                 isLoading={registerAccountMutation.isLoading}
                 disabled={registerAccountMutation.isLoading}
               >
-                Đăng ký
+                {t('sign up')}
               </Button>
             </div>
             <div className='mt-8 flex items-center justify-center'>
-              <span className='text-gray-400'>Bạn đã có tài khoản?</span>
+              <span className='text-gray-400'>{t('account yet')}?</span>
               <Link className='ml-1 font-medium text-blue' to='/login'>
-                Đăng nhập
+                {t('sign in')}
               </Link>
             </div>
           </form>

@@ -26,6 +26,7 @@
 
   "password": {
     "manage profile information": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
+    "pass": "Mật khẩu",
     "old password": "Mật khẩu cũ",
     "new password": "Mật khẩu mới",
     "re-enter the password": "Nhập lại mật khẩu"

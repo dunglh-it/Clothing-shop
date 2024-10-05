@@ -15,6 +15,7 @@ import { getAvatarUrl, isAxiosUnprocessableEntityError } from 'src/utils/utils'
 import { ErrorResponse } from 'src/types/utils.type'
 import InputFile from 'src/components/InputFile'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 function Info() {
   const { t } = useTranslation(['profile'])
@@ -163,6 +164,11 @@ export default function Profile() {
 
   return (
     <div className='rounded-md bg-white px-2 pb-10 shadow-md md:px-7 md:pb-20'>
+      <Helmet>
+        <title>{t('profile info.my account')} | Clothing Shop</title>
+        <meta name='description' content='Thông tin tài khoản của bạn' />
+      </Helmet>
+
       <div className='border-b border-b-gray-200 py-6'>
         <h1 className='text-lg font-medium capitalize text-gray-900'>{t('my account info.my profile')}</h1>
         <div className='mt-1 text-sm text-gray-700'>{t('my account info.manage profile information')}</div>

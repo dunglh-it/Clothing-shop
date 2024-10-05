@@ -3,6 +3,8 @@ import useRouteElements from './useRouteElements'
 import { useContext, useEffect } from 'react'
 import { AppContext } from './contexts/app.context'
 import { LocalStorageEventTarget } from './utils/auth'
+import { HelmetProvider } from 'react-helmet-async'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
   const routeElements = useRouteElements()
@@ -17,10 +19,12 @@ function App() {
   }, [reset])
 
   return (
-    <div>
-      {routeElements}
-      <ToastContainer />
-    </div>
+    <HelmetProvider>
+      <ErrorBoundary>
+        {routeElements}
+        <ToastContainer />
+      </ErrorBoundary>
+    </HelmetProvider>
   )
 }
 
