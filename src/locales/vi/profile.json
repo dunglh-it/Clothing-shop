@@ -1,0 +1,43 @@
+{
+  "profile info": {
+    "edit profile": "Sửa hồ sơ",
+    "my account": "Tài khoản của tôi",
+    "my purchase": "Đơn mua"
+  },
+
+  "change password": "Đổi mật khẩu",
+
+  "my account info": {
+    "my profile": "Hồ Sơ Của Tôi",
+    "manage profile information": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
+    "name": "Tên",
+    "phone number": "Số điện thoại",
+    "address": "Địa chỉ",
+    "date of birth": "Ngày sinh",
+    "day": "Ngày",
+    "month": "Tháng",
+    "year": "Năm",
+    "select image": "Chọn ảnh",
+    "file size": "Dụng lượng file tối đa",
+    "file extension": "Định dạng"
+  },
+
+  "save": "Lưu",
+
+  "password": {
+    "manage profile information": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
+    "old password": "Mật khẩu cũ",
+    "new password": "Mật khẩu mới",
+    "re-enter the password": "Nhập lại mật khẩu"
+  },
+
+  "my purchase info": {
+    "all": "Tất cả",
+    "wait for confirmation": "Chờ xác nhận",
+    "waiting for delivery": "Chờ lấy hàng",
+    "delivering": "Đang giao",
+    "delivered": "Đã giao",
+    "canceled": "Đã hủy",
+    "total price": "Tổng giá tiền"
+  }
+}

@@ -1,17 +1,23 @@
 import { Fragment, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 import config from 'src/constants/config'
 interface Props {
   onChange?: (file?: File) => void
 }
 export default function InputFile({ onChange }: Props) {
+  const { t } = useTranslation(['profile'])
+
   const fileInputRef = useRef<HTMLInputElement>(null)
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const fileFromLocal = event.target.files?.[0]
     if (fileFromLocal && (fileFromLocal.size >= config.maxSizeUploadAvatar || !fileFromLocal.type.includes('image'))) {
-      toast.error(`Dung lượng file tối đa 1MB. Định dạng: .JPEG, .PNG`, {
-        position: 'top-center'
-      })
+      toast.error(
+        `${t('profile:my account info.file size')} 1MB. ${t('profile:my account info.file extension')}: .JPEG, .PNG`,
+        {
+          position: 'top-center'
+        }
+      )
     } else {
       onChange && onChange(fileFromLocal)
     }
@@ -37,7 +43,7 @@ export default function InputFile({ onChange }: Props) {
         type='button'
         onClick={handleUpload}
       >
-        Chọn ảnh
+        {t('my account info.select image')}
       </button>
     </Fragment>
   )

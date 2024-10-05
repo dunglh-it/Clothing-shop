@@ -12,8 +12,11 @@ import purchaseApi from 'src/apis/purchase.api'
 import { toast } from 'react-toastify'
 import { purchaseStatus } from 'src/constants/purchase'
 import path from 'src/constants/path'
+import { useTranslation } from 'react-i18next'
 
 export default function ProductDetail() {
+  const { t } = useTranslation(['product'])
+
   const queryClient = useQueryClient()
 
   const [buyCount, setBuyCount] = useState(1)
@@ -104,9 +107,7 @@ export default function ProductDetail() {
       { buy_count: buyCount, product_id: product?._id as string },
       {
         onSuccess: (data) => {
-          const message = data?.data?.message || 'Thêm vào giỏ hàng thành công!'
-
-          toast.success(message, {
+          toast.success(data.data.message, {
             autoClose: 1000
           })
 
@@ -128,6 +129,7 @@ export default function ProductDetail() {
       buy_count: buyCount,
       product_id: product?._id as string
     })
+
     const purchase = res.data.data
     navigate(path.cart, {
       state: {
@@ -227,11 +229,11 @@ export default function ProductDetail() {
                   <div className='text-gray-500 line-through'>₫{formatCurrency(product.price_before_discount)}</div>
                   <div className='ml-3 text-3xl font-medium text-lightBlue'>₫{formatCurrency(product.price)}</div>
                   <div className='ml-4 rounded-sm bg-lightBlue px-1 py-[2px] text-xs font-semibold uppercase text-white'>
-                    {rateSale(product.price_before_discount, product.price)} giảm
+                    {rateSale(product.price_before_discount, product.price)} {t('product.off')}
                   </div>
                 </div>
                 <div className='mt-8 flex items-center'>
-                  <div className='capitalize text-gray-500'>Số lượng</div>
+                  <div className='capitalize text-gray-500'>{t('product.quantity')}</div>
 
                   <QuantityController
                     onDecrease={handleBuyCount}
@@ -241,7 +243,9 @@ export default function ProductDetail() {
                     max={product.quantity}
                   />
 
-                  <div className='ml-6 text-sm text-gray-500'>{product.quantity} sản phẩm có sẵn</div>
+                  <div className='ml-6 text-sm text-gray-500'>
+                    {product.quantity} {t('product.pieces available')}
+                  </div>
                 </div>
                 <div className='mt-8 flex items-center'>
                   <button
@@ -279,13 +283,13 @@ export default function ProductDetail() {
                         <line fill='none' strokeLinecap='round' strokeMiterlimit={10} x1={9} x2={9} y1='8.5' y2='5.5' />
                       </g>
                     </svg>
-                    <span className='text-lightBlue'>Thêm vào giỏ hàng</span>
+                    <span className='text-lightBlue'>{t('product.add to cart')}</span>
                   </button>
                   <button
                     className='ml-4 flex h-12 min-w-[5rem] items-center justify-center rounded-sm bg-lightBlue px-5 capitalize text-white shadow-sm outline-none hover:bg-lightBlue/90'
                     onClick={buyNow}
                   >
-                    Mua ngay
+                    {t('product.buy now')}
                   </button>
                 </div>
               </div>
@@ -295,7 +299,9 @@ export default function ProductDetail() {
 
         <div className='mt-8 rounded-md bg-white p-4 shadow-md'>
           <div className='container'>
-            <div className='rounded bg-gray-50 p-4 text-lg font-semibold capitalize text-slate-700'>Mô tả sản phẩm</div>
+            <div className='rounded bg-gray-50 p-4 text-lg font-semibold capitalize text-slate-700'>
+              {t('product.product description')}
+            </div>
             <div className='mx-4 mb-4 mt-12 text-sm leading-loose'>
               <div
                 dangerouslySetInnerHTML={{
@@ -308,7 +314,7 @@ export default function ProductDetail() {
 
         <div className='mt-8'>
           <div className='container'>
-            <div className='uppercase text-gray-400'>CÓ THỂ BẠN CŨNG THÍCH</div>
+            <div className='uppercase text-gray-400'>{t('product.you may also like')}</div>
             {productsData && (
               <div className='mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
                 {productsData.data.data.products.map((product) => (

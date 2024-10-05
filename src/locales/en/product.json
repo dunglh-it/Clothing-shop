@@ -1,0 +1,34 @@
+{
+  "aside filter": {
+    "all categories": "All categories",
+    "filter search": "Filter",
+    "price change": "Price Range",
+    "from": "MIN",
+    "to": "MAX",
+    "rating": "Rating",
+    "up": "UP",
+    "apply": "Apply",
+    "delete all": "Delete All"
+  },
+
+  "sort filter": {
+    "sort by": "Sort by",
+    "popular": "Popular",
+    "latest": "Latest",
+    "top sales": "Top Sales",
+    "price": "Price",
+    "low to high": "Low to High",
+    "high to low": "High to Low"
+  },
+
+  "product": {
+    "sold": "Sold",
+    "off": "OFF",
+    "quantity": "Quantity",
+    "pieces available": "pieces available",
+    "add to cart": "Add To Cart",
+    "buy now": "Buy Now",
+    "product description": "Product Description",
+    "you may also like": "you may also like"
+  }
+}

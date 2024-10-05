@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 import { createSearchParams, Link } from 'react-router-dom'
 import purchaseApi from 'src/apis/purchase.api'
 import path from 'src/constants/path'
@@ -17,6 +18,8 @@ const purchaseTabs = [
   { status: purchaseStatus.cancelled, name: 'Đã hủy' }
 ]
 export default function HistoryPurchase() {
+  const { t } = useTranslation(['profile'])
+
   const queryParams: { status?: string } = useQueryParams()
 
   const status: number = Number(queryParams.status) || purchaseStatus.all
@@ -74,7 +77,7 @@ export default function HistoryPurchase() {
                 </Link>
                 <div className='flex justify-end'>
                   <div>
-                    <span className='font-semibold'>Tổng giá tiền:</span>
+                    <span className='font-semibold'>{t('profile:my purchase info.total price')}:</span>
                     <span className='ml-4 text-xl text-lightBlue'>
                       ₫{formatCurrency(purchase.product.price * purchase.buy_count)}
                     </span>

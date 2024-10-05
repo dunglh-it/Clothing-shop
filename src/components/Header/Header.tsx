@@ -15,6 +15,7 @@ import purchaseApi from 'src/apis/purchase.api'
 import { formatCurrency } from 'src/utils/utils'
 import noproduct from 'src/assets/images/no-product.png'
 import NavHeader from '../NavHeader'
+import { useTranslation } from 'react-i18next'
 
 type FormData = Pick<Schema, 'name'>
 const nameSchema = schema.pick(['name'])
@@ -22,6 +23,8 @@ const nameSchema = schema.pick(['name'])
 const MAX_PURCHASES = 5
 
 export default function Header() {
+  const { t } = useTranslation(['header'])
+
   const queryConfig = useQueryConfig()
   const { register, handleSubmit } = useForm<FormData>({
     defaultValues: {
@@ -78,7 +81,7 @@ export default function Header() {
               <input
                 type='text'
                 className='flex-grow border-none bg-transparent px-3 py-2 text-black outline-none'
-                placeholder='Tìm kiếm sản phẩm'
+                placeholder={t('search for products')}
                 {...register('name')}
               />
 
@@ -145,7 +148,7 @@ export default function Header() {
                   ) : (
                     <div className='flex h-[300px] w-[300px] flex-col items-center justify-center p-2'>
                       <img src={noproduct} alt='no purchase' className='h-24 w-24' />
-                      <div className='mt-3 capitalize'>Chưa có sản phẩm</div>
+                      <div className='mt-3 capitalize'>{t('no products yet')}</div>
                     </div>
                   )}
                 </div>

@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom'
 import NavHeader from '../NavHeader'
 import useSearchProducts from 'src/hooks/useSearchProducts'
 import logoLight from 'src/assets/images/logo-light.png'
+import { useTranslation } from 'react-i18next'
 
 export default function CartHeader() {
+  const { t } = useTranslation(['header'])
+
   const { onSubmitSearch, register } = useSearchProducts()
   return (
     <div className='border-b border-b-black/10'>
@@ -25,7 +28,7 @@ export default function CartHeader() {
                 <input
                   type='text'
                   className='w-full flex-grow border-none bg-transparent px-3 py-1 text-black outline-none'
-                  placeholder='Tìm kiếm sản phẩm'
+                  placeholder={t('search for products')}
                   {...register('name')}
                 />
                 <button className='flex-shrink-0 bg-lightBlue px-8 py-2 hover:opacity-90'>

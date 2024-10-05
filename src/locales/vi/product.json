@@ -1,0 +1,36 @@
+{
+  "available": "Sản phẩm có sẵn",
+
+  "aside filter": {
+    "all categories": "Tất cả danh mục",
+    "filter search": "Bộ lọc tìm kiếm",
+    "price change": "Khoảng giá",
+    "from": "TỪ",
+    "to": "ĐẾN",
+    "rating": "Đánh giá",
+    "up": "Trở lên",
+    "apply": "Áp dụng",
+    "delete all": "Xoá Tất Cả"
+  },
+
+  "sort filter": {
+    "sort by": "Sắp xếp theo",
+    "popular": "Phổ biến",
+    "latest": "Mới nhất",
+    "top sales": "Bán chạy",
+    "price": "Giá",
+    "low to high": "Thấp Đến Cao",
+    "high to low": "Cao Đến Thấp"
+  },
+
+  "product": {
+    "sold": "Đã bán",
+    "off": "Giảm",
+    "quantity": "Số Lượng",
+    "pieces available": "sản phẩm có sẵn",
+    "add to cart": "Thêm Vào Giỏ Hàng",
+    "buy now": "Mua Ngay",
+    "product description": "Mô Tả Sản Phẩm",
+    "you may also like": "có thể bạn cũng thích"
+  }
+}

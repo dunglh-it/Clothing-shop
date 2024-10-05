@@ -1,0 +1,43 @@
+{
+  "profile info": {
+    "edit profile": "Edit Profile",
+    "my account": "My Account",
+    "my purchase": "My purchase"
+  },
+
+  "change password": "Change Password",
+
+  "my account info": {
+    "my profile": "My Profile",
+    "manage profile information": "Manage profile information to secure your account",
+    "name": "Name",
+    "phone number": "Phone Number",
+    "address": "Address",
+    "date of birth": "Date of birth",
+    "day": "Day",
+    "month": "Month",
+    "year": "Year",
+    "select image": "Select Image",
+    "file size": "File size: maximum",
+    "file extension": "File extension"
+  },
+
+  "save": "Save",
+
+  "password": {
+    "manage profile information": "Manage profile information for account security",
+    "old password": "Old password",
+    "new password": "New password",
+    "re-enter the password": "Re-enter password"
+  },
+
+  "my purchase info": {
+    "all": "All",
+    "wait for confirmation": "Wait for confirmation",
+    "waiting for delivery": "Waiting for delivery",
+    "delivering": "Delivering",
+    "delivered": "Delivered",
+    "canceled": "Canceled",
+    "total price": "Total price"
+  }
+}

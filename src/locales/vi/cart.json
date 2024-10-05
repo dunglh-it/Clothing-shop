@@ -1,0 +1,17 @@
+{
+  "cart": {
+    "product": "Sản phẩm",
+    "unit price": "Đơn giá",
+    "quantity": "Số lượng",
+    "total price": "Số Tiền",
+    "actions": "Thao tác",
+    "delete": "Xoá",
+    "select all": "Chọn Tất Cả",
+    "total": "Tổng thanh toán",
+    "saved": "Tiết kiệm",
+    "item": "sản phẩm",
+    "check out": "Mua Hàng",
+    "shopping cart": "Giỏ hàng của bạn còn trống",
+    "go shopping now": "Mua Ngay"
+  }
+}

@@ -8,10 +8,14 @@ import { authApi } from 'src/apis/auth.api'
 import { purchaseStatus } from 'src/constants/purchase'
 import flagVietNam from 'src/assets/images/flag-vietnam.png'
 import flagEnglish from 'src/assets/images/flag-english.png'
-import userImage from 'src/assets/images/user.svg'
 import { getAvatarUrl } from 'src/utils/utils'
+import { useTranslation } from 'react-i18next'
+import { locales } from 'src/i18n/i18n'
 
 export default function NavHeader() {
+  const { i18n, t } = useTranslation(['account'])
+  const currentLanguage = locales[i18n.language as keyof typeof locales]
+
   const { setIsAuthenticated, isAuthenticated, setProfile, profile } = useContext(AppContext)
   const queryClient = useQueryClient()
 
@@ -30,8 +34,13 @@ export default function NavHeader() {
       })
     }
   })
+
   const handleLogout = () => {
     logoutMutation.mutate()
+  }
+
+  const changeLanguage = (lng: 'en' | 'vi') => {
+    i18n.changeLanguage(lng)
   }
   return (
     <div className='flex justify-end'>
@@ -70,11 +79,18 @@ export default function NavHeader() {
         renderPopover={
           <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
             <div className='flex flex-col'>
-              <button className='flex items-center px-3 py-2 hover:bg-slate-100 hover:text-lightBlue'>
+              <button
+                className='flex items-center px-3 py-2 hover:bg-slate-100 hover:text-lightBlue'
+                onClick={() => changeLanguage('vi')}
+              >
                 <img src={flagVietNam} alt='Viet Nam' className='mr-2 h-5 w-5 object-cover' />
                 <span>Tiếng Việt</span>
               </button>
-              <button className='flex items-center px-3 py-2 pt-2 hover:bg-slate-100 hover:text-lightBlue'>
+
+              <button
+                className='flex items-center px-3 py-2 pt-2 hover:bg-slate-100 hover:text-lightBlue'
+                onClick={() => changeLanguage('en')}
+              >
                 <img src={flagEnglish} alt='English' className='mr-2 h-5 w-5 object-cover' />
                 <span>English</span>
               </button>
@@ -82,8 +98,12 @@ export default function NavHeader() {
           </div>
         }
       >
-        <img src={flagVietNam} alt='Viet Nam' className='h-5 w-5 object-cover' />
-        <span className='mx-1'>Tiếng Việt</span>
+        {currentLanguage === 'Tiếng Việt' ? (
+          <img src={flagVietNam} alt='Viet Nam' className='h-5 w-5 object-cover' />
+        ) : (
+          <img src={flagEnglish} alt='Viet Nam' className='h-5 w-5 object-cover' />
+        )}
+        <span className='mx-1'>{currentLanguage}</span>
 
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -103,22 +123,22 @@ export default function NavHeader() {
           renderPopover={
             <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
               <Link
-                to='/profile'
-                className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                to={path.profile}
+                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue'
               >
-                Tài khoản của tôi
+                {t('account:login.my account')}
               </Link>
               <Link
                 to={path.historyPurchase}
-                className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue'
               >
-                Đơn mua
+                {t('account:login.my purchase')}
               </Link>
               <button
                 onClick={handleLogout}
-                className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue'
               >
-                Đăng xuất
+                {t('account:login.logout')}
               </button>
             </div>
           }
@@ -134,11 +154,11 @@ export default function NavHeader() {
       {!isAuthenticated && (
         <div className='flex items-center'>
           <Link to={path.register} className='mx-3 capitalize hover:text-lightBlue/70'>
-            Đăng ký
+            {t('sign up')}
           </Link>
           <div className='h-4 border-r-[1px] border-r-lightBlue/40' />
           <Link to={path.login} className='mx-3 capitalize hover:text-lightBlue/70'>
-            Đăng nhập
+            {t('sign in')}
           </Link>
         </div>
       )}

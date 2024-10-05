@@ -1,0 +1,17 @@
+{
+  "cart": {
+    "product": "Product",
+    "unit price": "Unit Price",
+    "quantity": "Quantity",
+    "total price": "Total Price",
+    "actions": "Actions",
+    "delete": "Delete",
+    "select all": "Select All",
+    "total": "Total",
+    "saved": "Saved",
+    "item": "items",
+    "check out": "Check Out",
+    "shopping cart": "Your shopping cart is empty",
+    "go shopping now": "Go Shopping Now"
+  }
+}
