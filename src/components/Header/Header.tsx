@@ -67,7 +67,7 @@ export default function Header() {
   const purchasesInCart = purchasesInCartData?.data.data
 
   return (
-    <div className='bg-gray-200 shadow-md'>
+    <div className='bg-lightBlue/30 shadow-md'>
       <div className='container'>
         <NavHeader />
 

@@ -114,6 +114,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        <div className='border-t border-neutral-300 py-6 text-center text-[14px] text-neutral-600'>
+          <span>© 2024 Grocerymart. {t('about of.all rights reserved')}.</span>
+        </div>
       </div>
     </footer>
   )

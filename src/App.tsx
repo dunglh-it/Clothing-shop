@@ -1,4 +1,5 @@
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import useRouteElements from './useRouteElements'
 import { useContext, useEffect } from 'react'
 import { AppContext } from './contexts/app.context'

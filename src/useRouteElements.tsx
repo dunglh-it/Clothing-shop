@@ -1,11 +1,11 @@
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
-import RegisterLayout from './layouts/RegisterLayout'
 import { lazy, Suspense, useContext } from 'react'
 import { AppContext } from './contexts/app.context'
 import MainLayout from './layouts/MainLayout/MainLayout'
 import path from './constants/path'
 import CartLayout from './layouts/CartLayout'
 import UserLayout from './pages/User/layouts/UserLayout'
+import RegisterLayout from './layouts/RegisterLayout'
 
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
@@ -33,27 +33,30 @@ export default function useRouteElements() {
     {
       path: '',
       element: <RejectedRoute />,
+
       children: [
         {
-          path: path.login,
-          element: (
-            <RegisterLayout>
-              <Suspense>
-                <Login />
-              </Suspense>
-            </RegisterLayout>
-          )
-        },
+          path: '',
+          element: <RegisterLayout />,
+          children: [
+            {
+              path: path.login,
+              element: (
+                <Suspense>
+                  <Login />
+                </Suspense>
+              )
+            },
 
-        {
-          path: path.register,
-          element: (
-            <RegisterLayout>
-              <Suspense>
-                <Register />
-              </Suspense>
-            </RegisterLayout>
-          )
+            {
+              path: path.register,
+              element: (
+                <Suspense>
+                  <Register />
+                </Suspense>
+              )
+            }
+          ]
         }
       ]
     },
@@ -63,56 +66,6 @@ export default function useRouteElements() {
       element: <ProtectedRoute />,
       children: [
         {
-          path: path.user,
-          element: (
-            <MainLayout>
-              <Suspense>
-                <UserLayout />
-              </Suspense>
-            </MainLayout>
-          ),
-          children: [
-            {
-              path: path.profile,
-              element: (
-                <Suspense>
-                  <Profile />
-                </Suspense>
-              )
-            },
-
-            {
-              path: path.changePassword,
-              element: (
-                <Suspense>
-                  <ChangePassword />
-                </Suspense>
-              )
-            },
-
-            {
-              path: path.historyPurchase,
-              element: (
-                <Suspense>
-                  <HistoryPurchase />
-                </Suspense>
-              )
-            }
-          ]
-        },
-
-        {
-          path: path.product,
-          element: (
-            <MainLayout>
-              <Suspense>
-                <ProductList />
-              </Suspense>
-            </MainLayout>
-          )
-        },
-
-        {
           path: path.cart,
           element: (
             <CartLayout>
@@ -121,42 +74,90 @@ export default function useRouteElements() {
               </Suspense>
             </CartLayout>
           )
+        },
+
+        {
+          path: path.user,
+          element: <MainLayout />,
+          children: [
+            {
+              path: '',
+              element: <UserLayout />,
+              children: [
+                {
+                  path: path.profile,
+                  element: (
+                    <Suspense>
+                      <Profile />
+                    </Suspense>
+                  )
+                },
+
+                {
+                  path: path.changePassword,
+                  element: (
+                    <Suspense>
+                      <ChangePassword />
+                    </Suspense>
+                  )
+                },
+
+                {
+                  path: path.historyPurchase,
+                  element: (
+                    <Suspense>
+                      <HistoryPurchase />
+                    </Suspense>
+                  )
+                }
+              ]
+            }
+          ]
         }
       ]
     },
 
     {
-      path: path.productDetail,
-      element: (
-        <MainLayout>
-          <Suspense>
-            <ProductDetail />
-          </Suspense>
-        </MainLayout>
-      )
-    },
-
-    {
       path: '',
-      index: true,
-      element: (
-        <MainLayout>
-          <Suspense>
-            <Home />
-          </Suspense>
-        </MainLayout>
-      )
-    },
+      element: <MainLayout />,
+      children: [
+        {
+          path: path.product,
+          element: (
+            <Suspense>
+              <ProductList />
+            </Suspense>
+          )
+        },
 
-    {
-      path: '*',
-      element: (
-        <MainLayout>
-          <Suspense>
-            <NotFound />
-          </Suspense>
-        </MainLayout>
-      )
+        {
+          path: path.productDetail,
+          element: (
+            <Suspense>
+              <ProductDetail />
+            </Suspense>
+          )
+        },
+
+        {
+          path: '',
+          index: true,
+          element: (
+            <Suspense>
+              <Home />
+            </Suspense>
+          )
+        },
+
+        {
+          path: '*',
+          element: (
+            <Suspense>
+              <NotFound />
+            </Suspense>
+          )
+        }
+      ]
     }
   ])
 
