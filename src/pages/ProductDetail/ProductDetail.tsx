@@ -142,7 +142,7 @@ export default function ProductDetail() {
   if (!product) return null
 
   return (
-    <div className='bg-gray-50 py-6'>
+    <div className='bg-gray-100 py-6'>
       <Helmet>
         <title>{product.name} | Clothing Shop</title>
         <meta name='description' content='Chi tiết sản phẩm của sản phẩm chọn' />

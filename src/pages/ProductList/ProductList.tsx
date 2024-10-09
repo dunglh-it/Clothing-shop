@@ -28,7 +28,7 @@ export default function ProductList() {
   })
 
   return (
-    <div className='bg-gray-50/50 py-6'>
+    <div className='bg-gray-100 py-6'>
       <div className='container'>
         {productData && (
           <div className='grid grid-cols-12 gap-6'>

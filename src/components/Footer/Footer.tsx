@@ -6,7 +6,7 @@ export default function Footer() {
   const { t } = useTranslation(['footer'])
 
   return (
-    <footer className='bg-gray-100 shadow-sm'>
+    <footer className='bg-gray-200 shadow-sm'>
       <div className='container'>
         <div className='grid grid-cols-4 py-10'>
           <div className='col-span-1'>
