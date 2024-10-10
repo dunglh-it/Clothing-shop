@@ -40,13 +40,15 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
 
   return (
     <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-      <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>{t('my account info.date of birth')}</div>
+      <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+        {t('my account info.date of birth')}
+      </div>
       <div className='sm:w-[80%] sm:pl-5'>
         <div className='flex justify-between'>
           <select
             onChange={handleChange}
             name='date'
-            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3'
+            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 dark:bg-blackSecond dark:text-gray-400'
             value={value?.getDate() || date.date}
           >
             <option disabled>{t('my account info.day')}</option>
@@ -60,7 +62,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
           <select
             onChange={handleChange}
             name='month'
-            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3'
+            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 dark:bg-blackSecond dark:text-gray-400'
             value={value?.getMonth() || date.month}
           >
             <option disabled>{t('my account info.month')}</option>
@@ -74,7 +76,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
           <select
             onChange={handleChange}
             name='year'
-            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3'
+            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 dark:bg-blackSecond dark:text-gray-400'
             value={value?.getFullYear() || date.year}
           >
             <option disabled>{t('my account info.year')}</option>

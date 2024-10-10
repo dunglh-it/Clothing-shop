@@ -56,25 +56,27 @@ export default function ChangePassword() {
   })
 
   return (
-    <div className='rounded-sm bg-white px-2 pb-10 shadow md:px-7 md:pb-20'>
+    <div className='rounded-sm bg-white px-2 pb-10 shadow dark:bg-blackPrimary md:px-7 md:pb-20'>
       <Helmet>
         <title>{t('change password')} | Clothing Shop</title>
         <meta name='description' content='Thay đổi mật khẩu tài khoản của bạn' />
       </Helmet>
 
-      <div className='border-b border-b-gray-200 py-6'>
-        <h1 className='text-lg font-medium capitalize text-gray-900'>{t('change password')}</h1>
-        <div className='mt-1 text-sm text-gray-700'>{t('profile:password.manage profile information')}</div>
+      <div className='border-b border-b-gray-200 py-6 dark:border-b-gray-400'>
+        <h1 className='text-lg font-medium capitalize text-gray-900 dark:text-gray-400'>{t('change password')}</h1>
+        <div className='mt-1 text-sm text-gray-700 dark:text-gray-500'>
+          {t('profile:password.manage profile information')}
+        </div>
       </div>
       <form className='mr-auto mt-8 max-w-2xl' onSubmit={onSubmit}>
         <div className='mt-6 flex-grow md:mt-0 md:pr-12'>
           <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-            <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>
+            <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
               {t('profile:password.old password')}
             </div>
             <div className='sm:w-[80%] sm:pl-5'>
               <Input
-                classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
+                classNameInput='w-full rounded-sm border border-gray-300 dark:border-none dark:bg-blackSecond dark:text-gray-400 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
                 className='relative '
                 register={register}
                 name='password'
@@ -85,12 +87,12 @@ export default function ChangePassword() {
             </div>
           </div>
           <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-            <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>
+            <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
               {t('profile:password.new password')}
             </div>
             <div className='sm:w-[80%] sm:pl-5'>
               <Input
-                classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
+                classNameInput='w-full dark:border-none dark:bg-blackSecond dark:text-gray-400 rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
                 className='relative '
                 register={register}
                 name='new_password'
@@ -101,12 +103,12 @@ export default function ChangePassword() {
             </div>
           </div>
           <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-            <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>
+            <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
               {t('profile:password.re-enter the password')}
             </div>
             <div className='sm:w-[80%] sm:pl-5'>
               <Input
-                classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
+                classNameInput='w-full dark:border-none dark:bg-blackSecond dark:text-gray-400 rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
                 className='relative '
                 register={register}
                 name='confirm_password'

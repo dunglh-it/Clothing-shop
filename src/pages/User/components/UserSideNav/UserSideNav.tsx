@@ -12,13 +12,13 @@ export default function UserSideNav() {
 
   return (
     <div>
-      <div className='flex items-center border-b border-b-gray-200 py-4'>
+      <div className='flex items-center border-b border-b-gray-200 py-4 dark:border-b-gray-400'>
         <Link to={path.profile} className='h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border border-black/10'>
           <img src={getAvatarUrl(profile?.avatar)} alt='' className='h-full w-full object-cover' />
         </Link>
 
         <div className='flex-grow pl-4'>
-          <div className='mb-1 truncate font-semibold text-gray-600'>{profile?.email}</div>
+          <div className='mb-1 truncate font-semibold text-gray-600 dark:text-gray-400'>{profile?.email}</div>
           <Link to={path.profile} className='flex items-center capitalize text-gray-500'>
             <svg
               width={12}
@@ -38,7 +38,10 @@ export default function UserSideNav() {
         </div>
       </div>
       <div className='mt-7'>
-        <Link to={path.profile} className='text-orange flex items-center capitalize transition-colors'>
+        <Link
+          to={path.profile}
+          className='text-orange flex items-center capitalize transition-colors dark:text-gray-400'
+        >
           <div className='mr-3 h-[22px] w-[22px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -58,7 +61,10 @@ export default function UserSideNav() {
           {t('profile info.my account')}
         </Link>
 
-        <Link to={path.changePassword} className='mt-4 flex items-center capitalize text-gray-600 transition-colors'>
+        <Link
+          to={path.changePassword}
+          className='mt-4 flex items-center capitalize text-gray-600 transition-colors dark:text-gray-400'
+        >
           <div className='mr-3 h-[22px] w-[22px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -78,7 +84,10 @@ export default function UserSideNav() {
           {t('change password')}
         </Link>
 
-        <Link to={path.historyPurchase} className='mt-4 flex items-center capitalize text-gray-600 transition-colors'>
+        <Link
+          to={path.historyPurchase}
+          className='mt-4 flex items-center capitalize text-gray-600 transition-colors dark:text-gray-400'
+        >
           <div className='mr-3 h-[22px] w-[22px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'

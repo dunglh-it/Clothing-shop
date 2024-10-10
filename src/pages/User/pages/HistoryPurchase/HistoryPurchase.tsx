@@ -41,10 +41,13 @@ export default function HistoryPurchase() {
           status: String(tab.status)
         }).toString()
       }}
-      className={classNames('flex flex-1 items-center justify-center border-b-2 bg-white py-4 text-center', {
-        'border-b-lightBlue text-lightBlue': status === tab.status,
-        'border-b-black/10 text-gray-900': status !== tab.status
-      })}
+      className={classNames(
+        'flex flex-1 items-center justify-center border-b-2 bg-white py-4 text-center dark:bg-blackPrimary',
+        {
+          'border-b-lightBlue text-lightBlue': status === tab.status,
+          'border-b-black/10 text-gray-900 dark:text-white': status !== tab.status
+        }
+      )}
     >
       {tab.name}
     </Link>
@@ -62,7 +65,10 @@ export default function HistoryPurchase() {
           <div className='sticky top-0 flex rounded-t-sm shadow-sm'>{purchaseTabsLink}</div>
           <div>
             {purchasesInCart?.map((purchase) => (
-              <div key={purchase._id} className='mt-4 rounded-sm border-black/10 bg-white p-6 text-gray-800 shadow-sm'>
+              <div
+                key={purchase._id}
+                className='mt-4 rounded-sm border-black/10 bg-white p-6 text-gray-800 shadow-sm dark:bg-blackPrimary dark:text-white'
+              >
                 <Link
                   to={`${path.home}${generateNameId({ name: purchase.product.name, id: purchase.product._id })}`}
                   className='flex'
@@ -83,7 +89,7 @@ export default function HistoryPurchase() {
                 </Link>
                 <div className='flex justify-end'>
                   <div>
-                    <span className='font-semibold'>{t('profile:my purchase info.total price')}:</span>
+                    <span className='font-semibold'>{t('my purchase info.total price')}:</span>
                     <span className='ml-4 text-xl text-lightBlue'>
                       ₫{formatCurrency(purchase.product.price * purchase.buy_count)}
                     </span>

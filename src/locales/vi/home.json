@@ -2,5 +2,14 @@
   "aside filter": {
     "all categories": "Tất cả danh mục",
     "filter search": "Bộ lọc tìm kiếm"
+  },
+
+  "main": {
+    "all": "Tất cả",
+    "categories": "Danh mục",
+    "just for you": "Dành riêng cho bạn",
+    "t-shirt": "Áo thun",
+    "watch": "Đồng hồ",
+    "cellphone": "Điện thoại"
   }
 }

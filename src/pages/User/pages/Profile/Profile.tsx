@@ -29,10 +29,12 @@ function Info() {
   return (
     <Fragment>
       <div className='mt-6 flex flex-col flex-wrap sm:flex-row'>
-        <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>{t('my account info.name')}</div>
+        <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+          {t('my account info.name')}
+        </div>
         <div className='sm:w-[80%] sm:pl-5'>
           <Input
-            classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
+            classNameInput='w-full rounded-sm border border-gray-300 dark:text-gray-400 dark:bg-blackSecond dark:border-transparent px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
             register={register}
             name='name'
             placeholder={t('my account info.name')}
@@ -41,14 +43,16 @@ function Info() {
         </div>
       </div>
       <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-        <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>{t('my account info.phone number')}</div>
+        <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+          {t('my account info.phone number')}
+        </div>
         <div className='sm:w-[80%] sm:pl-5'>
           <Controller
             control={control}
             name='phone'
             render={({ field }) => (
               <InputNumber
-                classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
+                classNameInput='dark:bg-blackSecond dark:border-transparent w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm dark:text-gray-400'
                 placeholder={t('my account info.phone number')}
                 errorMessage={errors.phone?.message}
                 {...field}
@@ -163,35 +167,43 @@ export default function Profile() {
   }
 
   return (
-    <div className='rounded-md bg-white px-2 pb-10 shadow-md md:px-7 md:pb-20'>
+    <div className='rounded-md bg-white px-2 pb-10 shadow-md dark:bg-blackPrimary md:px-7 md:pb-20'>
       <Helmet>
         <title>{t('profile info.my account')} | Clothing Shop</title>
         <meta name='description' content='Thông tin tài khoản của bạn' />
       </Helmet>
 
-      <div className='border-b border-b-gray-200 py-6'>
-        <h1 className='text-lg font-medium capitalize text-gray-900'>{t('my account info.my profile')}</h1>
-        <div className='mt-1 text-sm text-gray-700'>{t('my account info.manage profile information')}</div>
+      <div className='border-b border-b-gray-200 py-6 dark:border-b-gray-400'>
+        <h1 className='text-lg font-medium capitalize text-gray-900 dark:text-white'>
+          {t('my account info.my profile')}
+        </h1>
+        <div className='mt-1 text-sm text-gray-700 dark:text-gray-500'>
+          {t('my account info.manage profile information')}
+        </div>
       </div>
 
       <FormProvider {...methods}>
         <form className='mt-8 flex flex-col-reverse md:flex-row md:items-start' onSubmit={onSubmit}>
           <div className='mt-6 flex-grow md:mt-0 md:pr-12'>
             <div className='flex flex-col flex-wrap sm:flex-row'>
-              <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>Email</div>
+              <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>Email</div>
 
               <div className='sm:w-[80%] sm:pl-5'>
-                <div className='pt-3 text-gray-700'>{profile?.email}</div>
+                <div className='rounded-sm px-3 py-2 pt-3 text-gray-700 dark:bg-blackSecond dark:text-gray-400'>
+                  {profile?.email}
+                </div>
               </div>
             </div>
 
             <Info />
 
             <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-              <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>{t('my account info.address')}</div>
+              <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+                {t('my account info.address')}
+              </div>
               <div className='sm:w-[80%] sm:pl-5'>
                 <Input
-                  classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
+                  classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 dark:bg-blackSecond dark:text-gray-400 dark:border-blackSecond focus:shadow-sm'
                   register={register}
                   name='address'
                   placeholder={t('my account info.address')}
@@ -224,7 +236,7 @@ export default function Profile() {
               </div>
             </div>
           </div>
-          <div className='flex justify-center md:w-72 md:border-l md:border-l-gray-200'>
+          <div className='flex justify-center md:w-72 md:border-l md:border-l-gray-200 dark:md:border-l-gray-400'>
             <div className='flex flex-col items-center'>
               <div className='my-5 h-24 w-24'>
                 <img

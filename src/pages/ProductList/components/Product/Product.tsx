@@ -20,16 +20,16 @@ export default function Product({ product }: Props) {
         <meta name='description' content='Danh sách sản phẩm của Clothing Shop' />
       </Helmet>
 
-      <div className='overflow-hidden rounded-sm bg-white shadow-md transition-transform duration-100 hover:translate-y-[-0.04rem] hover:text-lightBlue hover:shadow-lg'>
+      <div className='overflow-hidden rounded-sm bg-white shadow-md transition-transform duration-100 hover:translate-y-[-0.04rem] hover:text-lightBlue hover:shadow-lg dark:bg-blackPrimary dark:hover:text-lightBlue'>
         <div className='relative w-full pt-[100%]'>
           <img
             src={product.image}
             alt={product.name}
-            className='absolute left-0 top-0 h-full w-full bg-white object-cover'
+            className='absolute left-0 top-0 h-full w-full bg-white object-cover dark:bg-blackPrimary'
           />
         </div>
         <div className='overflow-hidden p-2'>
-          <div className='line-clamp-2 min-h-[2rem] text-xs'>{product.name}</div>
+          <div className='line-clamp-2 min-h-[2rem] text-xs dark:text-white'>{product.name}</div>
           <div className='mt-3 flex items-center'>
             <div className='max-w-[50%] truncate text-sm text-gray-500 line-through'>
               <span className='text-xs'>₫</span>
@@ -43,7 +43,7 @@ export default function Product({ product }: Props) {
           <div className='mt-3 flex items-center justify-between'>
             <ProductRating rating={product.rating} />
 
-            <div className='ml-2 text-sm text-black'>
+            <div className='ml-2 text-sm text-black dark:text-white'>
               <span>{formatNumberToSocialStyle(product.sold)}</span>
               <span className='ml-1'>{t('product.sold')}</span>
             </div>

@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import iconImage from 'src/assets/images/icon-signin.svg'
 import logoLight from 'src/assets/images/logo-light.png'
+import logoDark from 'src/assets/images/logo-dark.png'
 import { Omit } from 'lodash'
 import { schema, Schema } from 'src/utils/rules'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -10,7 +11,7 @@ import { authApi } from 'src/apis/auth.api'
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
 import { ErrorResponse } from 'src/types/utils.type'
 import Input from 'src/components/Input'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import Button from 'src/components/Button'
 import { Helmet } from 'react-helmet-async'
@@ -21,6 +22,24 @@ const loginSchema = schema.pick(['email', 'password'])
 
 export default function Login() {
   const { t } = useTranslation(['account', 'profile'])
+
+  const [isDarkMode, setIsDarkMode] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const getBodyMode = () => {
+      return document.body.classList.contains('dark') ? 'dark' : 'light'
+    }
+
+    setIsDarkMode(getBodyMode())
+
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(getBodyMode())
+    })
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] })
+
+    return () => observer.disconnect()
+  }, [])
 
   const { setIsAuthenticated, setProfile } = useContext(AppContext)
   const navigate = useNavigate()
@@ -63,34 +82,40 @@ export default function Login() {
   })
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white dark:bg-blackSecond'>
       <Helmet>
         <title>{t('sign in')} | Clothing Shop</title>
         <meta name='description' content='Đăng nhập vào dự án Clothing Shop' />
       </Helmet>
 
       <div className='grid h-screen grid-cols-1 lg:grid-cols-12'>
-        <div className='flex flex-col items-center justify-center bg-gray-50 lg:col-span-6'>
+        <div className='flex flex-col items-center justify-center bg-gray-50 dark:bg-blackPrimary lg:col-span-6'>
           <img src={iconImage} alt='Sign Up' />
-          <div className='lg:mt-12 lg:w-[412px] lg:text-center lg:text-lg lg:font-medium'>{t('login.brand value')}</div>
+          <div className='dark:text-gray-500 lg:mt-12 lg:w-[412px] lg:text-center lg:text-lg lg:font-medium'>
+            {t('login.brand value')}
+          </div>
         </div>
 
         <div className='flex flex-col items-center justify-center lg:col-span-6'>
           <Link to='/'>
-            <img src={logoLight} alt='Logo Light' className='h-8 w-[190px]' />
+            {isDarkMode === 'dark' ? (
+              <img src={logoDark} alt='Logo Dark' className='h-8 w-[190px] object-cover' />
+            ) : (
+              <img src={logoLight} alt='Logo Light' className='h-8 w-[190px] object-cover' />
+            )}
           </Link>
 
           <form className='mt-12 w-full text-center' onSubmit={onSubmit} noValidate>
-            <div className='text-3xl font-medium'>{t('sign in')}</div>
+            <div className='text-3xl font-medium dark:text-gray-400'>{t('sign in')}</div>
 
-            <div className='mb-6 mt-2 text-sm font-medium'>{t('welcome')}.</div>
+            <div className='mb-6 mt-2 text-sm font-medium dark:text-gray-500'>{t('welcome')}.</div>
 
             <Input
               name='email'
               register={register}
               type='email'
               className='mt-14'
-              classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
+              classNameInput='w-[460px] outline-none border dark:text-gray-400 border-gray-300 dark:bg-transparent focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
               errorMessage={errors.email?.message}
               placeholder='Email'
             />
@@ -100,8 +125,8 @@ export default function Login() {
               register={register}
               type='password'
               className='mt-3'
-              classNameInput='w-[460px] outline-none border border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3'
-              classNameEye='absolute right-[170px] h-5 w-5 cursor-pointer top-[12px]'
+              classNameInput='w-[460px] outline-none border dark:bg-transparent border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3 dark:text-gray-400'
+              classNameEye='absolute right-[170px] h-5 w-5 cursor-pointer top-[12px] dark:text-gray-400'
               errorMessage={errors.password?.message}
               placeholder={t('profile:password.pass')}
               autoComplete='on'

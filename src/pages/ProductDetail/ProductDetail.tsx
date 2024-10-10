@@ -142,14 +142,14 @@ export default function ProductDetail() {
   if (!product) return null
 
   return (
-    <div className='bg-gray-100 py-6'>
+    <div className='bg-gray-100 py-6 dark:bg-blackSecond'>
       <Helmet>
         <title>{product.name} | Clothing Shop</title>
         <meta name='description' content='Chi tiết sản phẩm của sản phẩm chọn' />
       </Helmet>
 
       <div className='container'>
-        <div className='rounded-md bg-white py-4 shadow-md'>
+        <div className='rounded-md bg-white py-4 shadow-md dark:bg-blackPrimary'>
           <div className='container'>
             <div className='grid grid-cols-12 gap-9'>
               <div className='col-span-5'>
@@ -161,7 +161,7 @@ export default function ProductDetail() {
                   <img
                     src={activeImage}
                     alt={product.name}
-                    className='absolute left-0 top-0 h-full w-full bg-white object-cover'
+                    className='absolute left-0 top-0 h-full w-full bg-white object-cover dark:bg-blackSecond'
                     ref={imageRef}
                   />
                 </div>
@@ -189,9 +189,9 @@ export default function ProductDetail() {
                         <img
                           src={img}
                           alt={product.name}
-                          className='absolute left-0 top-0 h-full w-full cursor-pointer bg-white object-cover'
+                          className='absolute left-0 top-0 h-full w-full cursor-pointer bg-white object-cover dark:bg-blackSecond'
                         />
-                        {isActive && <div className='border-orange absolute inset-0 border-2' />}
+                        {isActive && <div className='absolute inset-0 border-2 border-lightBlue' />}
                       </div>
                     )
                   })}
@@ -214,7 +214,7 @@ export default function ProductDetail() {
               </div>
 
               <div className='col-span-7'>
-                <h1 className='text-xl font-semibold uppercase'>{product.name}</h1>
+                <h1 className='text-xl font-semibold uppercase dark:text-white'>{product.name}</h1>
                 <div className='mt-8 flex items-center'>
                   <div className='flex items-center'>
                     <span className='mr-2 border-b border-b-lightBlue text-lightBlue'>{product.rating}</span>
@@ -226,20 +226,22 @@ export default function ProductDetail() {
                   </div>
                   <div className='mx-4 h-4 w-[1px] bg-gray-300'></div>
                   <div>
-                    <span>{formatNumberToSocialStyle(product.sold)}</span>
-                    <span className='ml-1 text-gray-500'>{t('product.sold')}</span>
+                    <span className='dark:text-white'>{formatNumberToSocialStyle(product.sold)}</span>
+                    <span className='ml-1 text-gray-500 dark:text-gray-400'>{t('product.sold')}</span>
                   </div>
                 </div>
 
-                <div className='mt-8 flex items-center bg-gray-50 px-5 py-4'>
-                  <div className='text-gray-500 line-through'>₫{formatCurrency(product.price_before_discount)}</div>
+                <div className='mt-8 flex items-center bg-gray-50 px-5 py-4 dark:bg-blackSecond'>
+                  <div className='text-gray-500 line-through dark:text-gray-400'>
+                    ₫{formatCurrency(product.price_before_discount)}
+                  </div>
                   <div className='ml-3 text-3xl font-medium text-lightBlue'>₫{formatCurrency(product.price)}</div>
                   <div className='ml-4 rounded-sm bg-lightBlue px-1 py-[2px] text-xs font-semibold uppercase text-white'>
                     {rateSale(product.price_before_discount, product.price)} {t('product.off')}
                   </div>
                 </div>
                 <div className='mt-8 flex items-center'>
-                  <div className='capitalize text-gray-500'>{t('product.quantity')}</div>
+                  <div className='capitalize text-gray-500 dark:text-white'>{t('product.quantity')}</div>
 
                   <QuantityController
                     onDecrease={handleBuyCount}
@@ -249,7 +251,7 @@ export default function ProductDetail() {
                     max={product.quantity}
                   />
 
-                  <div className='ml-6 text-sm text-gray-500'>
+                  <div className='ml-6 text-sm text-gray-500 dark:text-white'>
                     {product.quantity} {t('product.pieces available')}
                   </div>
                 </div>
@@ -303,12 +305,12 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        <div className='mt-8 rounded-md bg-white p-4 shadow-md'>
+        <div className='mt-8 rounded-md bg-white p-4 shadow-md dark:bg-blackPrimary'>
           <div className='container'>
-            <div className='rounded bg-gray-50 p-4 text-lg font-semibold capitalize text-slate-700'>
+            <div className='rounded bg-gray-50 p-4 text-lg font-semibold capitalize text-slate-700 dark:bg-blackSecond dark:text-white'>
               {t('product.product description')}
             </div>
-            <div className='mx-4 mb-4 mt-12 text-sm leading-loose'>
+            <div className='mx-4 mb-4 mt-12 text-sm leading-loose dark:text-white'>
               <div
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(product.description)
@@ -320,7 +322,7 @@ export default function ProductDetail() {
 
         <div className='mt-8'>
           <div className='container'>
-            <div className='uppercase text-gray-400'>{t('product.you may also like')}</div>
+            <div className='uppercase text-gray-400 dark:text-white'>{t('product.you may also like')}</div>
             {productsData && (
               <div className='mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
                 {productsData.data.data.products.map((product) => (

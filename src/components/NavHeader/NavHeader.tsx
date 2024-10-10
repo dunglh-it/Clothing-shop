@@ -61,7 +61,7 @@ export default function NavHeader() {
     <div className='flex justify-end pt-3'>
       <div className='flex cursor-pointer items-center hover:opacity-75'>
         <button
-          className='rounded-full bg-white px-2 py-2 shadow-sm hover:bg-lightBlue hover:text-white dark:bg-black/50 dark:text-white'
+          className='rounded-full border bg-white px-2 py-2 text-black shadow-sm hover:border hover:border-white hover:bg-lightBlue hover:text-white dark:bg-black/50 dark:text-white'
           onClick={toggleTheme}
           title={isDarkMode ? `${t('dark')} ` : `${t('light')}`}
         >
@@ -102,10 +102,10 @@ export default function NavHeader() {
       <Popover
         className='ml-4 flex cursor-pointer items-center py-1 hover:opacity-75'
         renderPopover={
-          <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
+          <div className='relative rounded-sm border border-gray-200 bg-white shadow-md dark:border-blackSecond dark:bg-blackSecond'>
             <div className='flex flex-col'>
               <button
-                className='flex items-center px-3 py-2 hover:bg-slate-100 hover:text-lightBlue'
+                className='flex items-center px-3 py-2 hover:bg-slate-100 hover:text-lightBlue dark:text-white dark:hover:bg-blackSecond dark:hover:text-lightBlue'
                 onClick={() => changeLanguage('vi')}
               >
                 <img src={flagVietNam} alt='Viet Nam' className='mr-2 h-5 w-5 object-cover' />
@@ -113,7 +113,7 @@ export default function NavHeader() {
               </button>
 
               <button
-                className='flex items-center px-3 py-2 pt-2 hover:bg-slate-100 hover:text-lightBlue'
+                className='flex items-center px-3 py-2 pt-2 hover:bg-slate-100 hover:text-lightBlue dark:text-white dark:hover:bg-blackSecond dark:hover:text-lightBlue'
                 onClick={() => changeLanguage('en')}
               >
                 <img src={flagEnglish} alt='English' className='mr-2 h-5 w-5 object-cover' />
@@ -128,7 +128,7 @@ export default function NavHeader() {
         ) : (
           <img src={flagEnglish} alt='Viet Nam' className='h-5 w-5 object-cover' />
         )}
-        <span className='mx-1'>{currentLanguage}</span>
+        <span className='mx-1 dark:text-white'>{currentLanguage}</span>
 
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -136,7 +136,7 @@ export default function NavHeader() {
           viewBox='0 0 24 24'
           strokeWidth={1.5}
           stroke='currentColor'
-          className='h-5 w-5'
+          className='h-5 w-5 dark:text-white'
         >
           <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' />
         </svg>
@@ -146,22 +146,22 @@ export default function NavHeader() {
         <Popover
           className='ml-6 flex cursor-pointer items-center py-1 hover:opacity-75'
           renderPopover={
-            <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
+            <div className='relative rounded-sm border border-gray-200 bg-white shadow-md dark:border-blackSecond dark:bg-blackSecond'>
               <Link
                 to={path.profile}
-                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue'
               >
                 {t('account:login.my account')}
               </Link>
               <Link
                 to={path.historyPurchase}
-                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue'
               >
                 {t('account:login.my purchase')}
               </Link>
               <button
                 onClick={handleLogout}
-                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue'
               >
                 {t('account:login.logout')}
               </button>
@@ -172,17 +172,17 @@ export default function NavHeader() {
             <img src={getAvatarUrl(profile?.avatar)} alt='avatar' className='h-full w-full rounded-full object-cover' />
           </div>
 
-          <div>{profile?.email}</div>
+          <div className='dark:text-white'>{profile?.email}</div>
         </Popover>
       )}
 
       {!isAuthenticated && (
         <div className='flex items-center'>
-          <Link to={path.register} className='mx-3 capitalize hover:text-lightBlue/70'>
+          <Link to={path.register} className='mx-3 capitalize hover:text-lightBlue/70 dark:text-white'>
             {t('sign up')}
           </Link>
           <div className='h-4 border-r-[1px] border-r-lightBlue/40' />
-          <Link to={path.login} className='mx-3 capitalize hover:text-lightBlue/70'>
+          <Link to={path.login} className='mx-3 capitalize hover:text-lightBlue/70 dark:text-white'>
             {t('sign in')}
           </Link>
         </div>

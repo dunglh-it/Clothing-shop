@@ -67,7 +67,8 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
       <Link
         to={path.product}
         className={classNames('flex items-center font-bold uppercase', {
-          'text-lightBlue': !category
+          'text-lightBlue': !category,
+          'dark:text-white': category
         })}
       >
         <svg viewBox='0 0 12 10' className='mr-3 h-4 w-3 fill-current'>
@@ -86,7 +87,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
         {t('aside filter.all categories')}
       </Link>
 
-      <div className='my-4 h-[1px] bg-lightBlue' />
+      <div className='my-4 h-[1px] bg-lightBlue dark:bg-slate-400' />
 
       <ul>
         {categories.map((categoryItem) => {
@@ -103,7 +104,8 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                   }).toString()
                 }}
                 className={classNames('relative px-2', {
-                  'font-semibold text-lightBlue': isActive
+                  'font-semibold text-lightBlue': isActive,
+                  'dark:text-white': !isActive
                 })}
               >
                 {isActive && (
@@ -118,7 +120,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
         })}
       </ul>
 
-      <Link to={path.home} className='mt-4 flex items-center font-bold uppercase'>
+      <Link to={path.home} className='mt-4 flex items-center font-bold uppercase dark:text-white'>
         <svg
           enableBackground='new 0 0 15 15'
           viewBox='0 0 15 15'
@@ -139,10 +141,10 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
         {t('aside filter.filter search')}
       </Link>
 
-      <div className='my-4 h-[1px] bg-lightBlue' />
+      <div className='my-4 h-[1px] bg-lightBlue dark:bg-slate-400' />
 
       <div className='my-5'>
-        <div className='text-md'>{t('aside filter.price change')}:</div>
+        <div className='text-md dark:text-white'>{t('aside filter.price change')}:</div>
         <form className='mt-3' onSubmit={onSubmit}>
           <div className='flex items-start'>
             <Controller
@@ -154,7 +156,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                     type='text'
                     className='grow'
                     placeholder={`₫ ${t('aside filter.from')}`}
-                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
+                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm dark:bg-blackSecond'
                     classNameError='hidden'
                     {...field}
                     onChange={(event) => {
@@ -166,7 +168,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
               }}
             />
 
-            <div className='mx-2 mt-2 shrink-0'>-</div>
+            <div className='mx-2 mt-2 shrink-0 dark:text-white'>-</div>
 
             <Controller
               control={control}
@@ -177,7 +179,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                     type='text'
                     className='grow'
                     placeholder={`₫ ${t('aside filter.to')}`}
-                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
+                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm dark:bg-blackSecond'
                     classNameError='hidden'
                     {...field}
                     onChange={(event) => {
@@ -198,12 +200,12 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
         </form>
       </div>
 
-      <div className='my-4 h-[1px] bg-lightBlue' />
+      <div className='my-4 h-[1px] bg-lightBlue dark:bg-slate-400' />
 
-      <div className='text-md'>{t('aside filter.rating')}:</div>
+      <div className='text-md dark:text-white'>{t('aside filter.rating')}:</div>
 
       <RatingStars queryConfig={queryConfig} />
-      <div className='my-4 h-[1px] bg-lightBlue' />
+      <div className='my-4 h-[1px] bg-lightBlue dark:bg-slate-400' />
 
       <Button
         className='flex w-full items-center justify-center bg-lightBlue p-2 text-sm uppercase text-white hover:bg-lightBlue/80'

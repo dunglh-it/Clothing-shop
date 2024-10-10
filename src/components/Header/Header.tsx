@@ -1,7 +1,8 @@
 import { createSearchParams, Link, useNavigate } from 'react-router-dom'
 import logoLight from 'src/assets/images/logo-light.png'
+import logoDark from 'src/assets/images/logo-dark.png'
 import Popover from '../Popover'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import { useQuery } from '@tanstack/react-query'
 import path from 'src/constants/path'
@@ -24,6 +25,24 @@ const MAX_PURCHASES = 5
 
 export default function Header() {
   const { t } = useTranslation(['header'])
+
+  const [isDarkMode, setIsDarkMode] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const getBodyMode = () => {
+      return document.body.classList.contains('dark') ? 'dark' : 'light'
+    }
+
+    setIsDarkMode(getBodyMode())
+
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(getBodyMode())
+    })
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] })
+
+    return () => observer.disconnect()
+  }, [])
 
   const queryConfig = useQueryConfig()
   const { register, handleSubmit } = useForm<FormData>({
@@ -67,17 +86,21 @@ export default function Header() {
   const purchasesInCart = purchasesInCartData?.data.data
 
   return (
-    <div className='bg-lightBlue/30 shadow-md'>
+    <div className='bg-lightBlue/30 shadow-md dark:bg-[#171C28]'>
       <div className='container'>
         <NavHeader />
 
         <div className='mt-4 grid grid-cols-12 items-center gap-12 pb-6'>
           <Link to='/' className='col-span-2'>
-            <img src={logoLight} alt='Logo' className='h-full w-full object-cover' />
+            {isDarkMode === 'dark' ? (
+              <img src={logoDark} alt='Logo Dark' className='h-full w-full object-cover' />
+            ) : (
+              <img src={logoLight} alt='Logo Light' className='h-full w-full object-cover' />
+            )}
           </Link>
 
           <form className='col-span-9' onSubmit={onSubmitSearch}>
-            <div className='flex rounded-sm bg-white p-1'>
+            <div className='flex rounded-sm bg-white p-1 dark:bg-[#292E39]'>
               <input
                 type='text'
                 className='flex-grow border-none bg-transparent px-3 py-2 text-black outline-none'
@@ -85,7 +108,7 @@ export default function Header() {
                 {...register('name')}
               />
 
-              <button className='flex-shrink-0 rounded-sm bg-lightBlue px-6 py-2 hover:opacity-90'>
+              <button className='flex-shrink-0 rounded-sm bg-lightBlue px-6 py-2 hover:opacity-90 dark:bg-blackPrimary'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
@@ -107,10 +130,10 @@ export default function Header() {
           <div className='col-span-1'>
             <Popover
               renderPopover={
-                <div className='relative max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md'>
+                <div className='relative max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md dark:border-blackPrimary dark:bg-blackPrimary'>
                   {purchasesInCart && purchasesInCart.length > 0 ? (
                     <div className='p-2'>
-                      <div className='capitalize text-gray-400'>Sản phẩm mới thêm</div>
+                      <div className='capitalize text-gray-400 dark:text-white'>Sản phẩm mới thêm</div>
                       <div className='mt-5'>
                         {purchasesInCart.slice(0, MAX_PURCHASES).map((purchase) => (
                           <div className='mt-4 flex' key={purchase._id}>
@@ -122,7 +145,7 @@ export default function Header() {
                               />
                             </div>
                             <div className='ml-2 flex-grow overflow-hidden'>
-                              <div className='truncate'>{purchase.product.name}</div>
+                              <div className='truncate dark:text-white'>{purchase.product.name}</div>
                             </div>
                             <div className='ml-2 flex-shrink-0'>
                               <span className='text-lightBlue'>₫{formatCurrency(purchase.product.price)}</span>
@@ -148,7 +171,7 @@ export default function Header() {
                   ) : (
                     <div className='flex h-[300px] w-[300px] flex-col items-center justify-center p-2'>
                       <img src={noproduct} alt='no purchase' className='h-24 w-24' />
-                      <div className='mt-3 capitalize'>{t('no products yet')}</div>
+                      <div className='mt-3 capitalize dark:text-white'>{t('no products yet')}</div>
                     </div>
                   )}
                 </div>
@@ -161,7 +184,7 @@ export default function Header() {
                   viewBox='0 0 24 24'
                   strokeWidth={1.5}
                   stroke='currentColor'
-                  className='h-7 w-7'
+                  className='h-7 w-7 dark:text-white'
                 >
                   <path
                     strokeLinecap='round'

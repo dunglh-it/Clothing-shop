@@ -2,5 +2,14 @@
   "aside filter": {
     "all categories": "All categories",
     "filter search": "Filter"
+  },
+
+  "main": {
+    "all": "All",
+    "categories": "Categories",
+    "just for you": "Just for you",
+    "t-shirt": "T-shirt",
+    "watch": "Watch",
+    "cellphone": "Cellphone"
   }
 }

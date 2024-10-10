@@ -155,7 +155,7 @@ export default function Cart() {
   }
 
   return (
-    <div className='bg-gray-100 py-16'>
+    <div className='bg-gray-100 py-16 dark:bg-blackSecond'>
       <Helmet>
         <title>{t('cart.cart shop')} | Clothing Shop</title>
         <meta name='description' content='Giỏ hàng của bạn trong Clothing Shop' />
@@ -166,7 +166,7 @@ export default function Cart() {
           <>
             <div className='overflow-auto'>
               <div className='min-w-[1000px]'>
-                <div className='grid grid-cols-12 rounded-md bg-white px-9 py-5 text-sm capitalize text-gray-500 shadow-md'>
+                <div className='grid grid-cols-12 rounded-md bg-white px-9 py-5 text-sm capitalize text-gray-500 shadow-md dark:bg-blackPrimary'>
                   <div className='col-span-6'>
                     <div className='flex items-center'>
                       <div className='flex flex-shrink-0 items-center justify-center pr-3'>
@@ -177,12 +177,12 @@ export default function Cart() {
                           onChange={handleCheckAll}
                         />
                       </div>
-                      <div className='flex-grow text-black'>{t('cart:cart.product')}</div>
+                      <div className='flex-grow text-black dark:text-white'>{t('cart:cart.product')}</div>
                     </div>
                   </div>
 
                   <div className='col-span-6'>
-                    <div className='grid grid-cols-5 text-center'>
+                    <div className='grid grid-cols-5 text-center dark:text-white'>
                       <div className='col-span-2'>{t('cart:cart.unit price')}</div>
                       <div className='col-span-1'>{t('cart:cart.quantity')}</div>
                       <div className='col-span-1'>{t('cart:cart.total price')}</div>
@@ -192,11 +192,11 @@ export default function Cart() {
                 </div>
 
                 {extendedPurchases.length > 0 && (
-                  <div className='my-3 rounded-md bg-white p-5 shadow-md'>
+                  <div className='my-3 rounded-md bg-white p-5 shadow-md dark:bg-blackPrimary'>
                     {extendedPurchases?.map((purchase, index) => (
                       <div
                         key={purchase._id}
-                        className='mb-5 grid grid-cols-12 rounded-sm border border-gray-200 bg-white px-4 py-5 text-center text-sm text-gray-500 first:mt-0'
+                        className='mb-5 grid grid-cols-12 rounded-sm border border-gray-200 bg-white px-4 py-5 text-center text-sm text-gray-500 first:mt-0 dark:border-blackSecond dark:bg-blackPrimary dark:text-white'
                       >
                         <div className='col-span-6'>
                           <div className='flex'>
@@ -277,7 +277,7 @@ export default function Cart() {
 
                             <div className='col-span-1'>
                               <button
-                                className='bg-none text-black transition-colors hover:text-lightBlue'
+                                className='bg-none text-black transition-colors hover:text-lightBlue dark:text-white'
                                 onClick={handleDelete(index)}
                               >
                                 {t('cart:cart.delete')}
@@ -291,7 +291,7 @@ export default function Cart() {
                 )}
               </div>
             </div>
-            <div className='sticky bottom-0 z-10 mt-8 flex flex-col rounded-md border border-gray-100 bg-white p-5 shadow-md sm:flex-row sm:items-center'>
+            <div className='sticky bottom-0 z-10 mt-8 flex flex-col rounded-md border border-gray-100 bg-white p-5 shadow-md dark:border-blackSecond dark:bg-blackPrimary sm:flex-row sm:items-center'>
               <div className='flex items-center'>
                 <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                   <input
@@ -301,10 +301,10 @@ export default function Cart() {
                     onChange={handleCheckAll}
                   />
                 </div>
-                <button className='mx-3 border-none bg-none' onClick={handleCheckAll}>
+                <button className='mx-3 border-none bg-none dark:text-white' onClick={handleCheckAll}>
                   {t('cart:cart.select all')} ({extendedPurchases.length})
                 </button>
-                <button className='mx-3 border-none bg-none' onClick={handleDeleteManyPurchases}>
+                <button className='mx-3 border-none bg-none dark:text-white' onClick={handleDeleteManyPurchases}>
                   {t('cart:cart.delete')}
                 </button>
               </div>
@@ -312,7 +312,7 @@ export default function Cart() {
               <div className='mt-5 flex flex-col sm:ml-auto sm:mt-0 sm:flex-row sm:items-center'>
                 <div>
                   <div className='flex items-center sm:justify-end'>
-                    <div>
+                    <div className='dark:text-white'>
                       {t('cart:cart.total')} ({checkedPurchasesCount} {t('cart:cart.item')}):
                     </div>
                     <div className='ml-2 text-2xl text-lightBlue'>₫{formatCurrency(totalCheckedPurchasePrice)}</div>
@@ -335,7 +335,7 @@ export default function Cart() {
         ) : (
           <div className='text-center'>
             <img src={noproduct} alt='no purchase' className='mx-auto h-24 w-24' />
-            <div className='mt-5 font-bold text-gray-400'>{t('cart:cart.shopping cart')}</div>
+            <div className='mt-5 font-bold text-gray-400 dark:text-white'>{t('cart:cart.shopping cart')}</div>
             <div className='mt-5 text-center'>
               <Link
                 to={path.home}
