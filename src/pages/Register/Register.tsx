@@ -91,7 +91,7 @@ export default function Register() {
       </Helmet>
 
       <div className='grid h-screen grid-cols-1 lg:grid-cols-12'>
-        <div className='flex flex-col items-center justify-center bg-gray-50 dark:bg-blackPrimary lg:col-span-6'>
+        <div className='hidden flex-col items-center justify-center bg-gray-50 dark:bg-blackPrimary lg:col-span-6 lg:flex'>
           <img src={iconImage} alt='Sign Up' />
           <div className='dark:text-gray-500 lg:mt-12 lg:w-[412px] lg:text-center lg:text-lg lg:font-medium'>
             {t('login.brand value')}
@@ -107,7 +107,7 @@ export default function Register() {
             )}
           </Link>
 
-          <form className='mt-12 w-full text-center' onSubmit={onSubmit} noValidate>
+          <form className='mt-12 w-[460px] max-w-full px-6 text-center' onSubmit={onSubmit} noValidate>
             <div className='text-3xl font-medium dark:text-gray-400'>{t('sign up')}</div>
 
             <div className='mb-6 mt-2 text-sm font-medium dark:text-gray-500'>{t('create shop')}.</div>
@@ -117,7 +117,7 @@ export default function Register() {
               register={register}
               type='email'
               className='mt-14'
-              classNameInput='w-[460px] outline-none border dark:text-gray-400 dark:bg-transparent border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3 dark:text-white'
+              classNameInput='w-full outline-none border dark:text-gray-400 dark:bg-transparent border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3 dark:text-white'
               errorMessage={errors.email?.message}
               placeholder='Email'
             />
@@ -127,8 +127,8 @@ export default function Register() {
               register={register}
               type='password'
               className='mt-3'
-              classNameInput='w-[460px] outline-none border dark:bg-transparent border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3 dark:text-gray-400'
-              classNameEye='absolute right-[170px] h-5 w-5 cursor-pointer top-[12px] dark:text-gray-400'
+              classNameInput='w-full outline-none border dark:bg-transparent border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3 dark:text-gray-400'
+              classNameEye='absolute right-[10px] h-5 w-5 cursor-pointer top-[12px] dark:text-gray-400'
               errorMessage={errors.password?.message}
               placeholder={t('profile:password.pass')}
               autoComplete='on'
@@ -139,8 +139,8 @@ export default function Register() {
               register={register}
               type='password'
               className='mt-3'
-              classNameInput='w-[460px] outline-none border dark:bg-transparent border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3 dark:text-gray-400'
-              classNameEye='absolute right-[170px] h-5 w-5 cursor-pointer top-[12px] dark:text-gray-400'
+              classNameInput='w-full outline-none border dark:bg-transparent border-gray-300 focus:border-gray-500 rounded-lg focus:shadow-sm p-3 dark:text-gray-400'
+              classNameEye='absolute right-[10px] h-5 w-5 cursor-pointer top-[12px] dark:text-gray-400'
               errorMessage={errors.confirm_password?.message}
               placeholder={t('profile:password.re-enter the password')}
               autoComplete='on'
@@ -149,7 +149,7 @@ export default function Register() {
             <div className='mt-9 flex items-center justify-center'>
               <Button
                 type='submit'
-                className='text-md flex w-[460px] items-center justify-center rounded-lg bg-lightBlue px-2 py-4 text-center font-medium uppercase text-white hover:bg-lightBlue/70'
+                className='text-md flex w-full items-center justify-center rounded-lg bg-lightBlue px-2 py-4 text-center font-medium uppercase text-white hover:bg-lightBlue/70'
                 isLoading={registerAccountMutation.isLoading}
                 disabled={registerAccountMutation.isLoading}
               >
