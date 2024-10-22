@@ -45,7 +45,7 @@ export default function Slide() {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {slides.map((slide) => (
-          <img key={slide.id} src={slide.image} alt={slide.alt} className='h-72 w-[1248px] object-cover' />
+          <img key={slide.id} src={slide.image} alt={slide.alt} className='h-72 w-full object-cover' />
         ))}
       </div>
 

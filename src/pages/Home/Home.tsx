@@ -35,17 +35,17 @@ export default function Home() {
       <div className='container'>
         <Slide />
 
-        <div className='mb-4 mt-8 text-2xl text-black/50 dark:text-white'>{t('home:main.categories')}</div>
+        <div className='mb-4 mt-8 text-xl text-black/50 dark:text-white md:text-2xl'>{t('home:main.categories')}</div>
 
         <div className='mb-6 overflow-hidden rounded-md bg-white shadow-lg dark:bg-[#171C28]'>
-          <div className='grid grid-cols-4'>
+          <div className='grid grid-cols-2 md:grid-cols-4'>
             <div className='col-span-1'>
               <Link
                 to={path.product}
                 className='flex flex-col items-center justify-center border border-neutral-200 py-3 hover:shadow-lg dark:border-black/80 dark:text-white'
               >
-                <img src={all} alt='Tất cả' className='h-20 w-20 object-cover' />
-                <span>{t('home:main.all')}</span>
+                <img src={all} alt='Tất cả' className='h-10 w-10 object-cover md:h-20 md:w-20' />
+                <span className='text-xs md:text-base'>{t('home:main.all')}</span>
               </Link>
             </div>
 
@@ -54,36 +54,36 @@ export default function Home() {
                 to={path.product + '?page=1&limit=20&category=60aba4e24efcc70f8892e1c6'}
                 className='flex flex-col items-center justify-center border border-neutral-200 border-l-transparent py-3 hover:shadow-lg dark:border-black/80 dark:text-white'
               >
-                <img src={shirt} alt='Áo thun' className='h-20 w-20 object-cover' />
-                <span>{t('home:main.t-shirt')}</span>
+                <img src={shirt} alt='Áo thun' className='h-10 w-10 object-cover md:h-20 md:w-20' />
+                <span className='text-xs md:text-base'>{t('home:main.t-shirt')}</span>
               </Link>
             </div>
 
             <div className='col-span-1'>
               <Link
                 to={path.product + '?page=1&limit=20&category=60afafe76ef5b902180aacb5'}
-                className='border-neutral-20 flex flex-col items-center justify-center border border-l-transparent border-r-transparent py-3 hover:shadow-md dark:border-black/80 dark:text-white'
+                className='border-neutral-20 flex flex-col items-center justify-center border border-l-transparent border-r-transparent border-t-transparent py-3 hover:shadow-md dark:border-black/80 dark:text-white'
               >
-                <img src={cellphone} alt='Điện thoại' className='h-20 w-20 object-cover' />
-                <span>{t('home:main.cellphone')}</span>
+                <img src={cellphone} alt='Điện thoại' className='h-10 w-10 object-cover md:h-20 md:w-20' />
+                <span className='text-xs md:text-base'>{t('home:main.cellphone')}</span>
               </Link>
             </div>
 
             <div className='col-span-1'>
               <Link
                 to={path.product + '?page=1&limit=20&category=60afacca6ef5b902180aacaf'}
-                className='flex flex-col items-center justify-center border border-neutral-200 py-3 hover:shadow-lg dark:border-black/80 dark:text-white'
+                className='flex flex-col items-center justify-center border border-neutral-200 border-t-transparent py-3 hover:shadow-lg dark:border-black/80 dark:text-white'
               >
-                <img src={clock} alt='Đồng hồ' className='h-20 w-20 object-cover' />
-                <span>{t('home:main.watch')}</span>
+                <img src={clock} alt='Đồng hồ' className='h-10 w-10 object-cover md:h-20 md:w-20' />
+                <span className='text-xs md:text-base'>{t('home:main.watch')}</span>
               </Link>
             </div>
           </div>
         </div>
 
-        <div className='mb-4 mt-8 text-2xl text-black/50 dark:text-white'>{t('home:main.just for you')}</div>
+        <div className='mb-4 mt-8 text-xl text-black/50 dark:text-white md:text-2xl'>{t('home:main.just for you')}</div>
 
-        <div className='mt-6 grid grid-cols-5 gap-4 shadow-md'>
+        <div className='mt-6 grid grid-cols-2 gap-4 shadow-md md:grid-cols-5'>
           {productDataHome?.data.data.products.map((product) => (
             <div className='col-span-1' key={product._id}>
               <Product product={product} />
