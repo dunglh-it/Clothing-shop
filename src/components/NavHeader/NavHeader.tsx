@@ -72,7 +72,7 @@ export default function NavHeader() {
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='size-6'
+              className='h-4 w-4 md:h-5 md:w-5'
             >
               <path
                 strokeLinecap='round'
@@ -87,7 +87,7 @@ export default function NavHeader() {
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='size-6'
+              className='h-4 w-4 md:h-5 md:w-5'
             >
               <path
                 strokeLinecap='round'
@@ -105,18 +105,18 @@ export default function NavHeader() {
           <div className='relative rounded-sm border border-gray-200 bg-white shadow-md dark:border-blackSecond dark:bg-blackSecond'>
             <div className='flex flex-col'>
               <button
-                className='flex items-center px-3 py-2 hover:bg-slate-100 hover:text-lightBlue dark:text-white dark:hover:bg-blackSecond dark:hover:text-lightBlue'
+                className='flex items-center px-3 py-2 text-[10px] hover:bg-slate-100 hover:text-lightBlue dark:text-white dark:hover:bg-blackSecond dark:hover:text-lightBlue md:text-[16px]'
                 onClick={() => changeLanguage('vi')}
               >
-                <img src={flagVietNam} alt='Viet Nam' className='mr-2 h-5 w-5 object-cover' />
+                <img src={flagVietNam} alt='Viet Nam' className='mr-2 h-4 w-4 object-cover md:h-5 md:w-5' />
                 <span>Tiếng Việt</span>
               </button>
 
               <button
-                className='flex items-center px-3 py-2 pt-2 hover:bg-slate-100 hover:text-lightBlue dark:text-white dark:hover:bg-blackSecond dark:hover:text-lightBlue'
+                className='flex items-center px-3 py-2 pt-2 text-[10px] hover:bg-slate-100 hover:text-lightBlue dark:text-white dark:hover:bg-blackSecond dark:hover:text-lightBlue md:text-[16px]'
                 onClick={() => changeLanguage('en')}
               >
-                <img src={flagEnglish} alt='English' className='mr-2 h-5 w-5 object-cover' />
+                <img src={flagEnglish} alt='English' className='mr-2 h-4 w-4 object-cover md:h-5 md:w-5' />
                 <span>English</span>
               </button>
             </div>
@@ -124,11 +124,11 @@ export default function NavHeader() {
         }
       >
         {currentLanguage === 'Tiếng Việt' ? (
-          <img src={flagVietNam} alt='Viet Nam' className='h-5 w-5 object-cover' />
+          <img src={flagVietNam} alt='Viet Nam' className='h-4 w-4 object-cover md:h-5 md:w-5' />
         ) : (
-          <img src={flagEnglish} alt='Viet Nam' className='h-5 w-5 object-cover' />
+          <img src={flagEnglish} alt='Viet Nam' className='h-4 w-4 object-cover md:h-5 md:w-5' />
         )}
-        <span className='mx-1 dark:text-white'>{currentLanguage}</span>
+        <span className='mx-1 text-[10px] dark:text-white md:text-[16px]'>{currentLanguage}</span>
 
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -136,7 +136,7 @@ export default function NavHeader() {
           viewBox='0 0 24 24'
           strokeWidth={1.5}
           stroke='currentColor'
-          className='h-5 w-5 dark:text-white'
+          className='h-3 w-3 dark:text-white md:h-4 md:w-4'
         >
           <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' />
         </svg>
@@ -149,40 +149,46 @@ export default function NavHeader() {
             <div className='relative rounded-sm border border-gray-200 bg-white shadow-md dark:border-blackSecond dark:bg-blackSecond'>
               <Link
                 to={path.profile}
-                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left text-[10px] capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue md:text-[16px]'
               >
                 {t('account:login.my account')}
               </Link>
               <Link
                 to={path.historyPurchase}
-                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left text-[10px] capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue md:text-[16px]'
               >
                 {t('account:login.my purchase')}
               </Link>
               <button
                 onClick={handleLogout}
-                className='block w-full bg-white px-4 py-3 text-left capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue'
+                className='block w-full bg-white px-4 py-3 text-left text-[10px] capitalize hover:bg-slate-100 hover:text-lightBlue dark:bg-blackSecond dark:text-white dark:hover:text-lightBlue md:text-[16px]'
               >
                 {t('account:login.logout')}
               </button>
             </div>
           }
         >
-          <div className='mr-2 h-6 w-6 flex-shrink-0'>
+          <div className='mr-2 h-5 w-5 flex-shrink-0 md:h-6 md:w-6'>
             <img src={getAvatarUrl(profile?.avatar)} alt='avatar' className='h-full w-full rounded-full object-cover' />
           </div>
 
-          <div className='dark:text-white'>{profile?.email}</div>
+          <div className='text-[10px] dark:text-white md:text-[16px]'>{profile?.email}</div>
         </Popover>
       )}
 
       {!isAuthenticated && (
         <div className='flex items-center'>
-          <Link to={path.register} className='mx-3 capitalize hover:text-lightBlue/70 dark:text-white'>
+          <Link
+            to={path.register}
+            className='mx-3 text-[10px] capitalize hover:text-lightBlue/70 dark:text-white md:text-[16px]'
+          >
             {t('sign up')}
           </Link>
-          <div className='h-4 border-r-[1px] border-r-lightBlue/40' />
-          <Link to={path.login} className='mx-3 capitalize hover:text-lightBlue/70 dark:text-white'>
+          <div className='h-4 border-r-[1px] border-r-lightBlue/50' />
+          <Link
+            to={path.login}
+            className='mx-3 text-[10px] capitalize hover:text-lightBlue/70 dark:text-white md:text-[16px]'
+          >
             {t('sign in')}
           </Link>
         </div>
