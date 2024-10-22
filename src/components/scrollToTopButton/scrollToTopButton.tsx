@@ -32,7 +32,7 @@ export default function ScrollToTopButton() {
     <div>
       {isVisible && (
         <button
-          className='fixed bottom-10 right-10 z-50 cursor-pointer scroll-smooth rounded-full border-none bg-white p-3 text-lightBlue shadow-md outline-none transition-all hover:bg-lightBlue hover:text-white dark:bg-blackPrimary dark:text-white'
+          className='fixed bottom-10 right-5 z-50 cursor-pointer scroll-smooth rounded-full border-none bg-white p-3 text-lightBlue shadow-md outline-none transition-all hover:bg-lightBlue hover:text-white dark:bg-blackPrimary dark:text-white md:right-10'
           onClick={scrollToTop}
         >
           {/* Icon mũi tên đi lên */}

@@ -8,11 +8,13 @@ export default function Footer() {
   return (
     <footer className='bg-gray-200 shadow-sm dark:bg-blackPrimary'>
       <div className='container'>
-        <div className='grid grid-cols-4 py-10'>
+        <div className='grig-cols-1 grid py-10 md:grid-cols-4'>
           <div className='col-span-1'>
-            <h4 className='text-sm font-semibold uppercase dark:text-white'>{t('take care.customer service')}</h4>
+            <h4 className='text-[12px] font-semibold  uppercase dark:text-white md:text-sm'>
+              {t('take care.customer service')}
+            </h4>
 
-            <ul className='mt-5 text-[12px] capitalize text-neutral-600'>
+            <ul className='mt-5 pb-5 text-[10px] capitalize text-neutral-600 md:text-[12px]'>
               <li className='mb-2 pb-1 hover:text-lightBlue dark:text-slate-400'>
                 <Link to='/'>{t('take care.help centre')}</Link>
               </li>
@@ -48,9 +50,9 @@ export default function Footer() {
           </div>
 
           <div className='col-span-1'>
-            <h4 className='text-sm font-semibold uppercase dark:text-white'>{t('about of.about')}</h4>
+            <h4 className='text-[12px] font-semibold  uppercase dark:text-white md:text-sm'>{t('about of.about')}</h4>
 
-            <ul className='mt-5 text-[12px] capitalize text-neutral-600'>
+            <ul className='mt-5 pb-5 text-[10px] capitalize text-neutral-600 md:text-[12px]'>
               <li className='mb-2 pb-1 hover:text-lightBlue dark:text-slate-400'>
                 <Link to='/'>{t('about of.about us')}</Link>
               </li>
@@ -70,9 +72,9 @@ export default function Footer() {
           </div>
 
           <div className='col-span-1'>
-            <h4 className='text-sm font-semibold uppercase dark:text-white'>{t('about of.follow')}</h4>
+            <h4 className='text-[12px] font-semibold uppercase dark:text-white md:text-sm'>{t('about of.follow')}</h4>
 
-            <ul className='mt-5 text-[12px] capitalize text-neutral-600'>
+            <ul className='mt-5 pb-5 text-[10px] capitalize text-neutral-600 md:text-[12px]'>
               <li className='mb-2 pb-1 hover:text-lightBlue dark:text-slate-400'>
                 <Link to='/' className='flex items-center'>
                   <svg
@@ -117,7 +119,9 @@ export default function Footer() {
           </div>
 
           <div className='col-span-1'>
-            <h4 className='text-sm font-semibold uppercase dark:text-white'>{t('about of.download app')}</h4>
+            <h4 className='text-[12px] font-semibold uppercase dark:text-white md:text-sm'>
+              {t('about of.download app')}
+            </h4>
 
             <div className='mt-5 inline-block rounded-md border bg-white px-4 py-2 shadow-sm dark:bg-blackSecond'>
               <Link to='/'>
@@ -127,7 +131,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className='border-t border-neutral-300 py-6 text-center text-[14px] text-neutral-600 dark:text-white'>
+        <div className='border-t border-neutral-300 py-6 text-center text-[12px] text-neutral-600 dark:text-white md:text-[14px]'>
           <span>© 2024 Grocerymart. {t('about of.all rights reserved')}.</span>
         </div>
       </div>

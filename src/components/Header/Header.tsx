@@ -91,12 +91,11 @@ export default function Header() {
   }
 
   return (
-    <div className='bg-lightBlue/30 px-2 shadow-md dark:bg-[#171C28]'>
+    <div className='sticky top-0 z-50 bg-[#d2f5f5] px-2 shadow-md dark:bg-[#171C28]'>
       <div className='container'>
         <NavHeader />
 
-        <div className='mt-4 grid grid-cols-12 items-center gap-3 pb-6 md:gap-12'>
-          {/* Nút mở thanh tìm kiếm ẩn logo và giỏ hàng */}
+        <div className='mt-4 grid grid-cols-12 items-center gap-3 pb-4 md:gap-12 md:pb-6'>
           {isSearchOpen ? (
             <div className='relative col-span-12'>
               <form className='mr-12 flex justify-between' onSubmit={onSubmitSearch}>
@@ -124,7 +123,6 @@ export default function Header() {
                   </svg>
                 </button>
 
-                {/* Nút đóng */}
                 <button onClick={toggleSearch} className='absolute right-0 top-1 p-1'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -141,7 +139,6 @@ export default function Header() {
             </div>
           ) : (
             <>
-              {/* Logo */}
               <Link to='/' className='col-span-3 md:col-span-2'>
                 {isDarkMode === 'dark' ? (
                   <img src={logoDark} alt='Logo Dark' className='w-15 h-full  object-cover md:w-full' />
@@ -150,7 +147,6 @@ export default function Header() {
                 )}
               </Link>
 
-              {/* Thanh tìm kiếm */}
               <form className='col-span-6 md:col-span-9' onSubmit={onSubmitSearch}>
                 <div className='hidden justify-start rounded-sm bg-white p-1 dark:bg-[#292E39] md:flex'>
                   <input
@@ -182,7 +178,7 @@ export default function Header() {
                 </div>
 
                 <button
-                  className='flex-shrink-0 rounded-full bg-lightBlue p-3 hover:opacity-90 dark:bg-blackPrimary md:hidden'
+                  className='flex-shrink-0 rounded-full bg-lightBlue p-3 hover:opacity-90 dark:border dark:bg-blackPrimary md:hidden'
                   onClick={toggleSearch}
                   type='button'
                 >
@@ -203,13 +199,15 @@ export default function Header() {
                 </button>
               </form>
 
-              <div className='col-span-3 md:col-span-1'>
+              <div className='col-span-3 col-start-12 md:col-span-1'>
                 <Popover
                   renderPopover={
-                    <div className='relative max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md dark:border-blackPrimary dark:bg-blackPrimary'>
+                    <div className='relative max-w-[250px] rounded-sm border border-gray-200 bg-white text-sm shadow-md dark:border-blackPrimary dark:bg-blackPrimary md:max-w-[350px] lg:max-w-[400px]'>
                       {purchasesInCart && purchasesInCart.length > 0 ? (
                         <div className='p-2'>
-                          <div className='capitalize text-gray-400 dark:text-white'>Sản phẩm mới thêm</div>
+                          <div className='text-[12px] capitalize text-gray-400 dark:text-white md:text-base'>
+                            Sản phẩm mới thêm
+                          </div>
                           <div className='mt-5'>
                             {purchasesInCart.slice(0, MAX_PURCHASES).map((purchase) => (
                               <div className='mt-4 flex' key={purchase._id}>
@@ -217,28 +215,32 @@ export default function Header() {
                                   <img
                                     src={purchase.product.image}
                                     alt={purchase.product.name}
-                                    className='h-11 w-11 object-cover'
+                                    className='h-6 w-6 object-cover md:h-11 md:w-11'
                                   />
                                 </div>
                                 <div className='ml-2 flex-grow overflow-hidden'>
-                                  <div className='truncate dark:text-white'>{purchase.product.name}</div>
+                                  <div className='truncate text-xs dark:text-white md:text-base'>
+                                    {purchase.product.name}
+                                  </div>
                                 </div>
                                 <div className='ml-2 flex-shrink-0'>
-                                  <span className='text-lightBlue'>₫{formatCurrency(purchase.product.price)}</span>
+                                  <span className='text-xs text-lightBlue md:text-base'>
+                                    ₫{formatCurrency(purchase.product.price)}
+                                  </span>
                                 </div>
                               </div>
                             ))}
                           </div>
                           <div className='mt-6 flex items-center justify-between'>
                             <div className='text-xs capitalize text-gray-500'>
-                              <span className='font-semibold text-lightBlue'>
+                              <span className='text-xs font-semibold text-lightBlue md:text-base'>
                                 {purchasesInCart.length > MAX_PURCHASES ? purchasesInCart.length - MAX_PURCHASES : ''}
                               </span>{' '}
                               Thêm hàng vào giỏ
                             </div>
                             <Link
                               to={path.cart}
-                              className='rounded-sm bg-lightBlue px-4 py-2 capitalize text-white hover:bg-opacity-90'
+                              className='rounded-sm bg-lightBlue px-4 py-2 text-xs capitalize text-white hover:bg-opacity-90 md:text-base'
                             >
                               Xem giỏ hàng
                             </Link>
@@ -246,8 +248,10 @@ export default function Header() {
                         </div>
                       ) : (
                         <div className='flex h-[300px] w-[300px] flex-col items-center justify-center p-2'>
-                          <img src={noproduct} alt='no purchase' className='h-24 w-24' />
-                          <div className='mt-3 capitalize dark:text-white'>{t('no products yet')}</div>
+                          <img src={noproduct} alt='no purchase' className='h-12 w-12 md:h-24 md:w-24' />
+                          <div className='mt-3 text-xs capitalize dark:text-white md:text-base'>
+                            {t('no products yet')}
+                          </div>
                         </div>
                       )}
                     </div>
