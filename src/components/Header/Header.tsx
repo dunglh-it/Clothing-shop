@@ -139,7 +139,7 @@ export default function Header() {
             </div>
           ) : (
             <>
-              <Link to='/' className='col-span-3 md:col-span-2'>
+              <Link to='/' className='col-span-3 md:col-span-3 lg:col-span-2'>
                 {isDarkMode === 'dark' ? (
                   <img src={logoDark} alt='Logo Dark' className='w-15 h-full  object-cover md:w-full' />
                 ) : (
@@ -147,7 +147,7 @@ export default function Header() {
                 )}
               </Link>
 
-              <form className='col-span-6 md:col-span-9' onSubmit={onSubmitSearch}>
+              <form className='col-span-6 md:col-span-7 lg:col-span-9' onSubmit={onSubmitSearch}>
                 <div className='hidden justify-start rounded-sm bg-white p-1 dark:bg-[#292E39] md:flex'>
                   <input
                     type='text'
@@ -199,7 +199,7 @@ export default function Header() {
                 </button>
               </form>
 
-              <div className='col-span-3 col-start-12 md:col-span-1'>
+              <div className='col-span-3 col-start-12 md:col-span-2 lg:col-span-1'>
                 <Popover
                   renderPopover={
                     <div className='relative max-w-[250px] rounded-sm border border-gray-200 bg-white text-sm shadow-md dark:border-blackPrimary dark:bg-blackPrimary md:max-w-[350px] lg:max-w-[400px]'>

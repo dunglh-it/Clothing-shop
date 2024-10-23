@@ -1,7 +1,7 @@
 export default function ProductRating({
   rating,
-  activeClassName = 'h-3 w-3 fill-yellow-300 text-yellow-300',
-  nonActiveClassName = 'h-3 w-3 fill-current text-gray-300 dark:text-white'
+  activeClassName = 'md:h-3 h-2 w-2 md:w-3 fill-yellow-300 text-yellow-300',
+  nonActiveClassName = 'md:h-3 h-2 w-2 md:w-3 fill-current text-gray-300 dark:text-white'
 }: {
   rating: number
   activeClassName?: string

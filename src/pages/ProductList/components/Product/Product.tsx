@@ -29,21 +29,23 @@ export default function Product({ product }: Props) {
           />
         </div>
         <div className='overflow-hidden p-2'>
-          <div className='line-clamp-2 min-h-[2rem] text-xs dark:text-white'>{product.name}</div>
+          <div className='line-clamp-2 min-h-[2rem] text-[10px] dark:text-white md:text-xs'>{product.name}</div>
           <div className='mt-3 flex items-center'>
             <div className='max-w-[50%] truncate text-sm text-gray-500 line-through'>
-              <span className='text-xs'>₫</span>
-              <span>{formatCurrency(product.price_before_discount)}</span>
+              <span className='text-[10px] lg:text-xs'>₫</span>
+              <span className='text-[10px] md:text-xs lg:text-base'>
+                {formatCurrency(product.price_before_discount)}
+              </span>
             </div>
             <div className='ml-1 truncate text-lightBlue'>
-              <span className='text-xs'>₫</span>
-              <span>{formatCurrency(product.price)}</span>
+              <span className='text-[10px] lg:text-xs'>₫</span>
+              <span className='text-[10px] md:text-xs lg:text-base'>{formatCurrency(product.price)}</span>
             </div>
           </div>
           <div className='mt-3 flex items-center justify-between'>
             <ProductRating rating={product.rating} />
 
-            <div className='ml-2 text-sm text-black dark:text-white'>
+            <div className='ml-1 truncate text-[10px] text-black dark:text-white md:ml-2 md:text-xs lg:text-sm'>
               <span>{formatNumberToSocialStyle(product.sold)}</span>
               <span className='ml-1'>{t('product.sold')}</span>
             </div>

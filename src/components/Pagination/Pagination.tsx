@@ -79,7 +79,7 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
             }}
             key={index}
             className={classNames(
-              'mx-2 cursor-pointer rounded border bg-white px-3 py-2 shadow-md hover:bg-lightBlue hover:text-white dark:bg-blackPrimary dark:text-white dark:hover:bg-lightBlue',
+              'mx-1 flex cursor-pointer items-center justify-center rounded border bg-white px-2 py-1 text-[12px] shadow-md hover:bg-lightBlue hover:text-white dark:bg-blackPrimary dark:text-white dark:hover:bg-lightBlue md:mx-2 md:px-3 md:py-2 md:text-sm',
               {
                 'border-lightBlue': pageNumber === page,
                 'border-transparent': pageNumber !== page
@@ -93,16 +93,16 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
   }
 
   return (
-    <div className='mt-6 flex flex-wrap justify-center'>
+    <div className='mt-6 flex flex-wrap items-center justify-center'>
       {page === 1 ? (
-        <span className='mx-2 cursor-not-allowed rounded border bg-white/60 px-3 py-2 shadow-sm dark:border-blackPrimary dark:bg-blackSecond dark:text-white'>
+        <span className='mx-1 cursor-not-allowed rounded border bg-white/60 px-2 py-1 shadow-sm dark:border-blackPrimary dark:bg-blackSecond dark:text-white md:mx-2 md:px-3 md:py-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='h-5 w-5'
+            className='h-4 w-4 md:h-5 md:w-5'
           >
             <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' />
           </svg>
@@ -116,7 +116,7 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
               page: (page - 1).toString()
             }).toString()
           }}
-          className='mx-2 cursor-pointer rounded border bg-white px-3 py-2 shadow-sm hover:bg-lightBlue hover:text-white dark:border-none dark:bg-blackPrimary dark:text-white dark:hover:bg-lightBlue'
+          className='mx-1 cursor-pointer rounded border bg-white px-2 py-1 shadow-sm hover:bg-lightBlue hover:text-white dark:border-none dark:bg-blackPrimary dark:text-white dark:hover:bg-lightBlue md:mx-2 md:px-3 md:py-2'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -124,7 +124,7 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='h-5 w-5'
+            className='h-4 w-4 md:h-5 md:w-5'
           >
             <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' />
           </svg>
@@ -134,14 +134,14 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
       {renderPagination()}
 
       {page === pageSize ? (
-        <span className='mx-2 cursor-not-allowed rounded border bg-white/60 px-3 py-2 shadow-sm dark:border-blackPrimary dark:bg-blackSecond dark:text-white'>
+        <span className='mx-1 cursor-not-allowed rounded border bg-white/60 px-2 py-1 shadow-sm dark:border-blackPrimary dark:bg-blackSecond dark:text-white md:mx-2 md:px-3 md:py-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='h-5 w-5'
+            className='h-4 w-4 md:h-5 md:w-5'
           >
             <path strokeLinecap='round' strokeLinejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' />
           </svg>
@@ -155,7 +155,7 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
               page: (page + 1).toString()
             }).toString()
           }}
-          className='mx-2 cursor-pointer rounded border bg-white px-3 py-2 shadow-sm hover:bg-lightBlue hover:text-white dark:border-none dark:bg-blackPrimary dark:text-white dark:hover:bg-lightBlue'
+          className='mx-1 cursor-pointer rounded border bg-white px-2 py-1 shadow-sm hover:bg-lightBlue hover:text-white dark:border-none dark:bg-blackPrimary dark:text-white dark:hover:bg-lightBlue md:mx-2 md:px-3 md:py-2'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -163,7 +163,7 @@ export default function Pagination({ queryConfig, pageSize }: Props) {
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='h-5 w-5'
+            className='h-4 w-4 md:h-5 md:w-5'
           >
             <path strokeLinecap='round' strokeLinejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' />
           </svg>

@@ -66,7 +66,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
     <div className='py-4'>
       <Link
         to={path.product}
-        className={classNames('flex items-center font-bold uppercase', {
+        className={classNames('flex items-center text-[10px] font-bold uppercase md:text-xs lg:text-base', {
           'text-lightBlue': !category,
           'dark:text-white': category
         })}
@@ -103,7 +103,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                     category: categoryItem._id
                   }).toString()
                 }}
-                className={classNames('relative px-2', {
+                className={classNames('relative px-2 text-[10px] md:text-xs lg:text-base', {
                   'font-semibold text-lightBlue': isActive,
                   'dark:text-white': !isActive
                 })}
@@ -120,7 +120,10 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
         })}
       </ul>
 
-      <Link to={path.home} className='mt-4 flex items-center font-bold uppercase dark:text-white'>
+      <Link
+        to={path.home}
+        className='mt-4 flex items-center text-[10px] font-bold uppercase dark:text-white md:text-xs lg:text-base'
+      >
         <svg
           enableBackground='new 0 0 15 15'
           viewBox='0 0 15 15'
@@ -144,9 +147,9 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
       <div className='my-4 h-[1px] bg-lightBlue dark:bg-slate-400' />
 
       <div className='my-5'>
-        <div className='text-md dark:text-white'>{t('aside filter.price change')}:</div>
+        <div className='text-[10px] dark:text-white md:text-xs lg:text-base'>{t('aside filter.price change')}:</div>
         <form className='mt-3' onSubmit={onSubmit}>
-          <div className='flex items-start'>
+          <div className='flex flex-col items-start lg:flex-row'>
             <Controller
               control={control}
               name='price_min'
@@ -156,7 +159,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                     type='text'
                     className='grow'
                     placeholder={`₫ ${t('aside filter.from')}`}
-                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm dark:bg-blackSecond'
+                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm dark:bg-blackSecond text-[10px] md:text-xs lg:text-base'
                     classNameError='hidden'
                     {...field}
                     onChange={(event) => {
@@ -179,7 +182,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                     type='text'
                     className='grow'
                     placeholder={`₫ ${t('aside filter.to')}`}
-                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm dark:bg-blackSecond'
+                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm dark:bg-blackSecond text-[10px] md:text-xs lg:text-base'
                     classNameError='hidden'
                     {...field}
                     onChange={(event) => {
@@ -192,9 +195,11 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             />
           </div>
 
-          <div className='mt-1 min-h-[1.25rem] text-center text-sm text-red-600'>{errors.price_min?.message}</div>
+          <div className='mt-1 min-h-[1.25rem] text-center text-[10px] text-red-600 lg:text-sm'>
+            {errors.price_min?.message}
+          </div>
 
-          <Button className='flex w-full items-center justify-center bg-lightBlue p-2 text-sm uppercase text-white hover:bg-lightBlue/80'>
+          <Button className='flex w-full items-center justify-center bg-lightBlue p-2 text-[10px] uppercase text-white hover:bg-lightBlue/80 lg:text-sm'>
             {t('aside filter.apply')}
           </Button>
         </form>
@@ -202,13 +207,13 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
 
       <div className='my-4 h-[1px] bg-lightBlue dark:bg-slate-400' />
 
-      <div className='text-md dark:text-white'>{t('aside filter.rating')}:</div>
+      <div className='text-md text-[10px] dark:text-white md:text-xs lg:text-base'>{t('aside filter.rating')}:</div>
 
       <RatingStars queryConfig={queryConfig} />
       <div className='my-4 h-[1px] bg-lightBlue dark:bg-slate-400' />
 
       <Button
-        className='flex w-full items-center justify-center bg-lightBlue p-2 text-sm uppercase text-white hover:bg-lightBlue/80'
+        className='flex w-full items-center justify-center bg-lightBlue p-2 text-[10px] uppercase text-white hover:bg-lightBlue/80 md:text-xs lg:text-base'
         onClick={handleRemoveAll}
       >
         {t('aside filter.delete all')}
