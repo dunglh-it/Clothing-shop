@@ -151,8 +151,8 @@ export default function ProductDetail() {
       <div className='container'>
         <div className='rounded-md bg-white py-4 shadow-md dark:bg-blackPrimary'>
           <div className='container'>
-            <div className='grid grid-cols-12 gap-9'>
-              <div className='col-span-5'>
+            <div className='grid grid-cols-12 gap-6 md:gap-7 lg:gap-9'>
+              <div className='col-span-12 md:col-span-6 lg:col-span-5'>
                 <div
                   className='relative w-full cursor-zoom-in overflow-hidden pt-[100%] shadow'
                   onMouseMove={handleZoom}
@@ -167,7 +167,7 @@ export default function ProductDetail() {
                 </div>
                 <div className='relative mt-4 grid grid-cols-5 gap-1'>
                   <button
-                    className='absolute left-0 top-1/2 z-10 h-9 w-5 -translate-y-1/2 bg-black/20 text-white'
+                    className='absolute left-0 top-1/2 z-10 h-6 w-4 -translate-y-1/2 bg-black/20 text-white md:h-7 lg:h-9 lg:w-5'
                     onClick={prev}
                   >
                     <svg
@@ -176,7 +176,7 @@ export default function ProductDetail() {
                       viewBox='0 0 24 24'
                       strokeWidth={1.5}
                       stroke='currentColor'
-                      className='h-5 w-5'
+                      className='h-4 w-4 lg:h-5 lg:w-5'
                     >
                       <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' />
                     </svg>
@@ -196,7 +196,7 @@ export default function ProductDetail() {
                     )
                   })}
                   <button
-                    className='absolute right-0 top-1/2 z-10 h-9 w-5 -translate-y-1/2 bg-black/20 text-white'
+                    className='absolute right-0 top-1/2 z-10 h-6 w-4 -translate-y-1/2 bg-black/20 text-white md:h-7 lg:h-9 lg:w-5'
                     onClick={next}
                   >
                     <svg
@@ -205,7 +205,7 @@ export default function ProductDetail() {
                       viewBox='0 0 24 24'
                       strokeWidth={1.5}
                       stroke='currentColor'
-                      className='h-5 w-5'
+                      className='h-4 w-4 lg:h-5 lg:w-5'
                     >
                       <path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
                     </svg>
@@ -213,35 +213,47 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              <div className='col-span-7'>
-                <h1 className='text-xl font-semibold uppercase dark:text-white'>{product.name}</h1>
-                <div className='mt-8 flex items-center'>
+              <div className='col-span-12 md:col-span-6 lg:col-span-7'>
+                <h1 className='text-sm font-semibold uppercase dark:text-white md:text-base lg:text-xl'>
+                  {product.name}
+                </h1>
+                <div className='mt-8 flex items-center justify-center md:justify-start'>
                   <div className='flex items-center'>
-                    <span className='mr-2 border-b border-b-lightBlue text-lightBlue'>{product.rating}</span>
+                    <span className='mr-2 border-b border-b-lightBlue text-xs text-lightBlue md:text-sm lg:text-base'>
+                      {product.rating}
+                    </span>
                     <ProductRating
                       rating={product.rating}
-                      activeClassName='fill-lightBlue text-lightBlue h-4 w-4'
-                      nonActiveClassName='fill-gray-300 text-gray-300 h-4 w-4'
+                      activeClassName='fill-lightBlue text-lightBlue h-3 w-3 lg:h-4 h-3 w-3 lg:w-4'
+                      nonActiveClassName='fill-gray-300 text-gray-300 h-3 w-3 lg:h-4 h-3 w-3 lg:w-4'
                     />
                   </div>
                   <div className='mx-4 h-4 w-[1px] bg-gray-300'></div>
                   <div>
-                    <span className='dark:text-white'>{formatNumberToSocialStyle(product.sold)}</span>
-                    <span className='ml-1 text-gray-500 dark:text-gray-400'>{t('product.sold')}</span>
+                    <span className='text-xs dark:text-white md:text-sm lg:text-base'>
+                      {formatNumberToSocialStyle(product.sold)}
+                    </span>
+                    <span className='ml-1 text-xs text-gray-500 dark:text-gray-400 md:text-sm lg:text-base'>
+                      {t('product.sold')}
+                    </span>
                   </div>
                 </div>
 
                 <div className='mt-8 flex items-center bg-gray-50 px-5 py-4 dark:bg-blackSecond'>
-                  <div className='text-gray-500 line-through dark:text-gray-400'>
+                  <div className='text-xs text-gray-500 line-through dark:text-gray-400 md:text-sm lg:text-base'>
                     ₫{formatCurrency(product.price_before_discount)}
                   </div>
-                  <div className='ml-3 text-3xl font-medium text-lightBlue'>₫{formatCurrency(product.price)}</div>
-                  <div className='ml-4 rounded-sm bg-lightBlue px-1 py-[2px] text-xs font-semibold uppercase text-white'>
+                  <div className='ml-3 text-3xl text-xs font-medium text-lightBlue md:text-sm lg:text-base'>
+                    ₫{formatCurrency(product.price)}
+                  </div>
+                  <div className='ml-4 rounded-sm bg-lightBlue px-1 py-[2px] text-[10px] font-semibold uppercase text-white md:text-xs'>
                     {rateSale(product.price_before_discount, product.price)} {t('product.off')}
                   </div>
                 </div>
                 <div className='mt-8 flex items-center'>
-                  <div className='capitalize text-gray-500 dark:text-white'>{t('product.quantity')}</div>
+                  <div className='text-xs capitalize text-gray-500 dark:text-white md:text-sm lg:text-base'>
+                    {t('product.quantity')}
+                  </div>
 
                   <QuantityController
                     onDecrease={handleBuyCount}
@@ -251,13 +263,13 @@ export default function ProductDetail() {
                     max={product.quantity}
                   />
 
-                  <div className='ml-6 text-sm text-gray-500 dark:text-white'>
+                  <div className='ml-6 text-[11px] text-gray-500 dark:text-white md:text-xs lg:text-sm'>
                     {product.quantity} {t('product.pieces available')}
                   </div>
                 </div>
                 <div className='mt-8 flex items-center'>
                   <button
-                    className='text-orange flex h-12 items-center justify-center rounded-sm border border-lightBlue bg-lightBlue/10 px-5 capitalize shadow-sm hover:bg-lightBlue/5'
+                    className='flex h-10 items-center justify-center rounded-sm border border-lightBlue bg-lightBlue/10 px-5 text-xs capitalize text-lightBlue shadow-sm hover:bg-lightBlue/5 md:h-11 md:text-sm lg:h-12 lg:text-base'
                     onClick={addToCart}
                   >
                     <svg
@@ -265,7 +277,7 @@ export default function ProductDetail() {
                       viewBox='0 0 15 15'
                       x={0}
                       y={0}
-                      className='mr-[10px] h-5 w-5 fill-current stroke-lightBlue text-lightBlue'
+                      className='mr-[10px] h-4 w-4 fill-current stroke-lightBlue text-lightBlue lg:h-5 lg:w-5'
                     >
                       <g>
                         <g>
@@ -294,7 +306,7 @@ export default function ProductDetail() {
                     <span className='text-lightBlue'>{t('product.add to cart')}</span>
                   </button>
                   <button
-                    className='ml-4 flex h-12 min-w-[5rem] items-center justify-center rounded-sm bg-lightBlue px-5 capitalize text-white shadow-sm outline-none hover:bg-lightBlue/90'
+                    className='ml-4 flex h-10 min-w-[5rem] items-center justify-center rounded-sm bg-lightBlue px-5 text-xs capitalize text-white shadow-sm outline-none hover:bg-lightBlue/90 md:h-11 md:text-sm lg:h-12 lg:text-base'
                     onClick={buyNow}
                   >
                     {t('product.buy now')}
@@ -305,12 +317,12 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        <div className='mt-8 rounded-md bg-white p-4 shadow-md dark:bg-blackPrimary'>
+        <div className='mt-8 rounded-md bg-white p-2 shadow-md dark:bg-blackPrimary md:p-3 lg:p-4'>
           <div className='container'>
-            <div className='rounded bg-gray-50 p-4 text-lg font-semibold capitalize text-slate-700 dark:bg-blackSecond dark:text-white'>
+            <div className='rounded bg-gray-50 p-4 text-sm font-semibold capitalize text-slate-700 dark:bg-blackSecond dark:text-white md:text-base lg:text-lg'>
               {t('product.product description')}
             </div>
-            <div className='mx-4 mb-4 mt-12 text-sm leading-loose dark:text-white'>
+            <div className='mx-4 mb-4 mt-10 text-[10px] leading-loose dark:text-white md:mt-11 md:text-xs lg:mt-12 lg:text-sm'>
               <div
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(product.description)
@@ -322,7 +334,9 @@ export default function ProductDetail() {
 
         <div className='mt-8'>
           <div className='container'>
-            <div className='uppercase text-gray-400 dark:text-white'>{t('product.you may also like')}</div>
+            <div className='text-xs uppercase text-gray-400 dark:text-white md:text-sm lg:text-base'>
+              {t('product.you may also like')}
+            </div>
             {productsData && (
               <div className='mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
                 {productsData.data.data.products.map((product) => (

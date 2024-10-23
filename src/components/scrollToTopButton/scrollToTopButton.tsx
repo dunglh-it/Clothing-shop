@@ -32,7 +32,7 @@ export default function ScrollToTopButton() {
     <div>
       {isVisible && (
         <button
-          className='fixed bottom-10 right-5 z-50 cursor-pointer scroll-smooth rounded-full border-none bg-white p-3 text-lightBlue shadow-md outline-none transition-all hover:bg-lightBlue hover:text-white dark:bg-blackPrimary dark:text-white md:right-10'
+          className='fixed bottom-10 right-5 z-50 cursor-pointer scroll-smooth rounded-full border-none bg-white p-2 text-lightBlue shadow-md outline-none transition-all hover:bg-lightBlue hover:text-white dark:bg-blackPrimary dark:text-white md:right-10 lg:p-3'
           onClick={scrollToTop}
         >
           {/* Icon mũi tên đi lên */}
@@ -42,7 +42,7 @@ export default function ScrollToTopButton() {
             viewBox='0 0 24 24'
             strokeWidth={2}
             stroke='currentColor'
-            className='h-6 w-6'
+            className='h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6'
           >
             <path strokeLinecap='round' strokeLinejoin='round' d='M19 14l-7-7-7 7' />
           </svg>
