@@ -13,19 +13,28 @@ export default function UserSideNav() {
   return (
     <div>
       <div className='flex items-center border-b border-b-gray-200 py-4 dark:border-b-gray-400'>
-        <Link to={path.profile} className='h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border border-black/10'>
+        <Link
+          to={path.profile}
+          className='h-10 w-10 flex-shrink-0 overflow-hidden rounded-full border border-black/10 md:h-11 md:w-11 lg:h-12 lg:w-12'
+        >
           <img src={getAvatarUrl(profile?.avatar)} alt='' className='h-full w-full object-cover' />
         </Link>
 
         <div className='flex-grow pl-4'>
-          <div className='mb-1 truncate font-semibold text-gray-600 dark:text-gray-400'>{profile?.email}</div>
-          <Link to={path.profile} className='flex items-center capitalize text-gray-500'>
+          <div className='mb-1 truncate text-xs font-semibold text-gray-600 dark:text-gray-400 md:text-sm lg:text-base'>
+            {profile?.email}
+          </div>
+          <Link
+            to={path.profile}
+            className='flex items-center text-[10px] capitalize text-gray-500 md:text-xs lg:text-sm'
+          >
             <svg
               width={12}
               height={12}
               viewBox='0 0 12 12'
               xmlns='http://www.w3.org/2000/svg'
               style={{ marginRight: 4 }}
+              className='h-2 w-2 md:h-3 md:w-3'
             >
               <path
                 d='M8.54 0L6.987 1.56l3.46 3.48L12 3.48M0 8.52l.073 3.428L3.46 12l6.21-6.18-3.46-3.48'
@@ -37,19 +46,20 @@ export default function UserSideNav() {
           </Link>
         </div>
       </div>
-      <div className='mt-7'>
+
+      <div className='mt-5 flex items-center gap-12 md:mt-6 md:flex-col md:items-start md:gap-0 lg:mt-7'>
         <Link
           to={path.profile}
-          className='text-orange flex items-center capitalize transition-colors dark:text-gray-400'
+          className='flex items-center text-xs capitalize transition-colors dark:text-gray-400 md:text-sm lg:text-base'
         >
-          <div className='mr-3 h-[22px] w-[22px]'>
+          <div className='mr-1 h-[16px] w-[16px] md:mr-2 md:h-[18px] md:w-[18px] lg:mr-3 lg:h-[22px] lg:w-[22px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='h-6 w-6 stroke-lightBlue'
+              className='h-4 w-4 stroke-lightBlue md:h-5 md:w-5 lg:h-6 lg:w-6'
             >
               <path
                 strokeLinecap='round'
@@ -63,16 +73,16 @@ export default function UserSideNav() {
 
         <Link
           to={path.changePassword}
-          className='mt-4 flex items-center capitalize text-gray-600 transition-colors dark:text-gray-400'
+          className='flex items-center text-xs capitalize text-gray-600 transition-colors dark:text-gray-400 md:mt-4 md:text-sm lg:text-base'
         >
-          <div className='mr-3 h-[22px] w-[22px]'>
+          <div className='mr-1 h-[16px] w-[16px] md:mr-2 md:h-[18px] md:w-[18px] lg:mr-3 lg:h-[22px] lg:w-[22px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='h-6 w-6 stroke-lightBlue'
+              className='h-4 w-4 stroke-lightBlue md:h-5 md:w-5 lg:h-6 lg:w-6'
             >
               <path
                 strokeLinecap='round'
@@ -86,16 +96,16 @@ export default function UserSideNav() {
 
         <Link
           to={path.historyPurchase}
-          className='mt-4 flex items-center capitalize text-gray-600 transition-colors dark:text-gray-400'
+          className='flex items-center text-xs capitalize text-gray-600 transition-colors dark:text-gray-400 md:mt-4 md:text-sm lg:text-base'
         >
-          <div className='mr-3 h-[22px] w-[22px]'>
+          <div className='mr-1 h-[16px] w-[16px] md:mr-2 md:h-[18px] md:w-[18px] lg:mr-3 lg:h-[22px] lg:w-[22px]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='h-6 w-6 stroke-lightBlue'
+              className='h-4 w-4 stroke-lightBlue md:h-5 md:w-5 lg:h-6 lg:w-6'
             >
               <path
                 strokeLinecap='round'

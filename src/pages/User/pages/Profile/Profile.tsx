@@ -29,12 +29,12 @@ function Info() {
   return (
     <Fragment>
       <div className='mt-6 flex flex-col flex-wrap sm:flex-row'>
-        <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+        <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:pt-1 md:text-sm lg:pt-3 lg:text-base'>
           {t('my account info.name')}
         </div>
         <div className='sm:w-[80%] sm:pl-5'>
           <Input
-            classNameInput='w-full rounded-sm border border-gray-300 dark:text-gray-400 dark:bg-blackSecond dark:border-transparent px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm'
+            classNameInput='w-full rounded-sm border border-gray-300 dark:text-gray-400 dark:bg-blackSecond dark:border-transparent px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm text-xs md:text-sm lg:text-base'
             register={register}
             name='name'
             placeholder={t('my account info.name')}
@@ -43,7 +43,7 @@ function Info() {
         </div>
       </div>
       <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-        <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+        <div className='md:pt-1text-xs mb-2 truncate pt-0 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:text-sm lg:pt-3 lg:text-base'>
           {t('my account info.phone number')}
         </div>
         <div className='sm:w-[80%] sm:pl-5'>
@@ -52,7 +52,7 @@ function Info() {
             name='phone'
             render={({ field }) => (
               <InputNumber
-                classNameInput='dark:bg-blackSecond dark:border-transparent w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm dark:text-gray-400'
+                classNameInput='dark:bg-blackSecond dark:border-transparent w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 focus:shadow-sm dark:text-gray-400 text-xs md:text-sm lg:text-base'
                 placeholder={t('my account info.phone number')}
                 errorMessage={errors.phone?.message}
                 {...field}
@@ -167,17 +167,17 @@ export default function Profile() {
   }
 
   return (
-    <div className='rounded-md bg-white px-2 pb-10 shadow-md dark:bg-blackPrimary md:px-7 md:pb-20'>
+    <div className='rounded-md bg-white px-5 pb-10 shadow-md dark:bg-blackPrimary md:px-4 md:pb-20 lg:px-7'>
       <Helmet>
         <title>{t('profile info.my account')} | Clothing Shop</title>
         <meta name='description' content='Thông tin tài khoản của bạn' />
       </Helmet>
 
-      <div className='border-b border-b-gray-200 py-6 dark:border-b-gray-400'>
-        <h1 className='text-lg font-medium capitalize text-gray-900 dark:text-white'>
+      <div className='border-b border-b-gray-200 py-4 dark:border-b-gray-400 md:px-0 md:py-5 lg:py-6'>
+        <h1 className='text-sm font-medium capitalize text-gray-900 dark:text-white md:text-base lg:text-lg'>
           {t('my account info.my profile')}
         </h1>
-        <div className='mt-1 text-sm text-gray-700 dark:text-gray-500'>
+        <div className='mt-1 text-[10px] text-gray-700 dark:text-gray-500 md:text-sm lg:text-sm'>
           {t('my account info.manage profile information')}
         </div>
       </div>
@@ -186,10 +186,12 @@ export default function Profile() {
         <form className='mt-8 flex flex-col-reverse md:flex-row md:items-start' onSubmit={onSubmit}>
           <div className='mt-6 flex-grow md:mt-0 md:pr-12'>
             <div className='flex flex-col flex-wrap sm:flex-row'>
-              <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>Email</div>
+              <div className='md:pt-1text-xs mb-2 truncate pt-0 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:text-sm lg:pt-3 lg:text-base'>
+                Email
+              </div>
 
               <div className='sm:w-[80%] sm:pl-5'>
-                <div className='rounded-sm px-3 py-2 pt-3 text-gray-700 dark:bg-blackSecond dark:text-gray-400'>
+                <div className='rounded-sm border px-3 py-2 pt-1 text-xs text-gray-700 dark:bg-blackSecond dark:text-gray-400 md:text-sm lg:text-base'>
                   {profile?.email}
                 </div>
               </div>
@@ -198,12 +200,12 @@ export default function Profile() {
             <Info />
 
             <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-              <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+              <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:pt-1  md:text-sm lg:pt-3 lg:text-base'>
                 {t('my account info.address')}
               </div>
               <div className='sm:w-[80%] sm:pl-5'>
                 <Input
-                  classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 dark:bg-blackSecond dark:text-gray-400 dark:border-blackSecond focus:shadow-sm'
+                  classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 dark:bg-blackSecond dark:text-gray-400 dark:border-blackSecond focus:shadow-sm text-xs md:text-sm lg:text-base'
                   register={register}
                   name='address'
                   placeholder={t('my account info.address')}
@@ -225,10 +227,10 @@ export default function Profile() {
             />
 
             <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-              <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right' />
+              <div className='truncate pt-1 capitalize sm:w-[20%] sm:text-right md:pt-2 lg:pt-3' />
               <div className='sm:w-[80%] sm:pl-5'>
                 <Button
-                  className='flex h-9 items-center rounded-sm bg-lightBlue px-5 text-center text-sm text-white hover:bg-lightBlue/80'
+                  className='flex h-9 items-center rounded-sm bg-lightBlue px-5 text-center text-[10px] text-white hover:bg-lightBlue/80 md:text-xs lg:text-sm'
                   type='submit'
                 >
                   {t('save')}
@@ -238,7 +240,7 @@ export default function Profile() {
           </div>
           <div className='flex justify-center md:w-72 md:border-l md:border-l-gray-200 dark:md:border-l-gray-400'>
             <div className='flex flex-col items-center'>
-              <div className='my-5 h-24 w-24'>
+              <div className='md:h-22 md:w-22 my-3 h-20 w-20 md:my-4 lg:my-5 lg:h-24 lg:w-24'>
                 <img
                   src={previewImage || getAvatarUrl(avatar)}
                   alt=''
@@ -248,7 +250,7 @@ export default function Profile() {
 
               <InputFile onChange={handleChangeFile} />
 
-              <div className='mt-3 text-gray-400'>
+              <div className='mt-3 text-xs text-gray-400 md:text-sm lg:text-base'>
                 <div>{t('my account info.file size')} 1 MB</div>
                 <div>{t('my account info.file extension')}:.JPEG, .PNG</div>
               </div>

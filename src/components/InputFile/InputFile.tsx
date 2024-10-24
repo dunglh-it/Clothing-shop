@@ -39,7 +39,7 @@ export default function InputFile({ onChange }: Props) {
         }}
       />
       <button
-        className='flex h-10 items-center justify-end rounded-sm border bg-white px-6 text-sm text-gray-600 shadow-sm  dark:bg-blackSecond dark:text-gray-400'
+        className='flex h-6 items-center justify-end rounded-sm border bg-white px-4 text-[10px] text-gray-600 shadow-sm dark:bg-blackSecond dark:text-gray-400 md:h-8 md:px-5 md:text-xs lg:h-10 lg:px-6 lg:text-sm'
         type='button'
         onClick={handleUpload}
       >

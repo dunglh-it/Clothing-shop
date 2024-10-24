@@ -42,7 +42,7 @@ export default function HistoryPurchase() {
         }).toString()
       }}
       className={classNames(
-        'flex flex-1 items-center justify-center border-b-2 bg-white py-4 text-center dark:bg-blackPrimary',
+        'flex flex-1 items-center justify-center truncate border-b-2 bg-white py-2 text-center text-xs dark:bg-blackPrimary md:py-3 md:text-sm lg:py-4',
         {
           'border-b-lightBlue text-lightBlue': status === tab.status,
           'border-b-black/10 text-gray-900 dark:text-white': status !== tab.status
@@ -74,13 +74,17 @@ export default function HistoryPurchase() {
                   className='flex'
                 >
                   <div className='flex-shrink-0'>
-                    <img className='h-20 w-20 object-cover' src={purchase.product.image} alt={purchase.product.name} />
+                    <img
+                      className='md:h-18 md:w-18 h-16 w-16 object-cover lg:h-20 lg:w-20'
+                      src={purchase.product.image}
+                      alt={purchase.product.name}
+                    />
                   </div>
-                  <div className='ml-3 flex-grow overflow-hidden'>
+                  <div className='ml-3 flex-grow overflow-hidden text-xs md:text-sm lg:text-base'>
                     <div className='truncate'>{purchase.product.name}</div>
                     <div className='mt-3'>x{purchase.buy_count}</div>
                   </div>
-                  <div className='ml-3 flex-shrink-0'>
+                  <div className='ml-3 flex-shrink-0 text-xs md:text-sm lg:text-base'>
                     <span className='truncate text-gray-500 line-through'>
                       ₫{formatCurrency(purchase.product.price_before_discount)}
                     </span>
@@ -89,8 +93,10 @@ export default function HistoryPurchase() {
                 </Link>
                 <div className='flex justify-end'>
                   <div>
-                    <span className='font-semibold'>{t('my purchase info.total price')}:</span>
-                    <span className='ml-4 text-xl text-lightBlue'>
+                    <span className='text-xs font-semibold md:text-sm lg:text-base'>
+                      {t('my purchase info.total price')}:
+                    </span>
+                    <span className='ml-4 text-base text-lightBlue md:text-lg lg:text-xl'>
                       ₫{formatCurrency(purchase.product.price * purchase.buy_count)}
                     </span>
                   </div>

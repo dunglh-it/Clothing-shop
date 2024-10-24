@@ -40,7 +40,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
 
   return (
     <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-      <div className='truncate pt-3 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right'>
+      <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:pt-1 md:text-sm lg:pt-3 lg:text-base'>
         {t('my account info.date of birth')}
       </div>
       <div className='sm:w-[80%] sm:pl-5'>
@@ -48,7 +48,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
           <select
             onChange={handleChange}
             name='date'
-            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 dark:bg-blackSecond dark:text-gray-400'
+            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 text-xs dark:bg-blackSecond dark:text-gray-400 md:text-sm lg:text-base'
             value={value?.getDate() || date.date}
           >
             <option disabled>{t('my account info.day')}</option>
@@ -62,7 +62,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
           <select
             onChange={handleChange}
             name='month'
-            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 dark:bg-blackSecond dark:text-gray-400'
+            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 text-xs dark:bg-blackSecond dark:text-gray-400 md:text-sm lg:text-base'
             value={value?.getMonth() || date.month}
           >
             <option disabled>{t('my account info.month')}</option>
@@ -76,7 +76,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
           <select
             onChange={handleChange}
             name='year'
-            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 dark:bg-blackSecond dark:text-gray-400'
+            className='hover:border-orange h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 text-xs dark:bg-blackSecond dark:text-gray-400 md:text-sm lg:text-base'
             value={value?.getFullYear() || date.year}
           >
             <option disabled>{t('my account info.year')}</option>
@@ -87,7 +87,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
             ))}
           </select>
         </div>
-        <div className='mt-1 min-h-[1.25rem] text-sm text-red-600'>{errorMessage}</div>
+        <div className='mt-1 min-h-[1.25rem] text-[10px] text-red-600 md:text-xs lg:text-sm'>{errorMessage}</div>
       </div>
     </div>
   )
