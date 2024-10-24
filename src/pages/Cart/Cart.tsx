@@ -155,7 +155,7 @@ export default function Cart() {
   }
 
   return (
-    <div className='bg-gray-100 py-16 dark:bg-blackSecond'>
+    <div className='bg-gray-100 py-12 dark:bg-blackSecond md:py-14 lg:py-16'>
       <Helmet>
         <title>{t('cart.cart shop')} | Clothing Shop</title>
         <meta name='description' content='Giỏ hàng của bạn trong Clothing Shop' />
@@ -166,22 +166,24 @@ export default function Cart() {
           <>
             <div className='overflow-auto'>
               <div className='min-w-[1000px]'>
-                <div className='grid grid-cols-12 rounded-md bg-white px-9 py-5 text-sm capitalize text-gray-500 shadow-md dark:bg-blackPrimary'>
-                  <div className='col-span-6'>
+                <div className='grid grid-cols-12 rounded-md bg-white px-4 py-3 text-sm capitalize text-gray-500 shadow-md dark:bg-blackPrimary md:px-8 md:py-4 lg:px-9 lg:py-5'>
+                  <div className='col-span-4 md:col-span-5 lg:col-span-6'>
                     <div className='flex items-center'>
                       <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                         <input
                           type='checkbox'
-                          className='h-5 w-5 cursor-pointer accent-lightBlue'
+                          className='h-3 w-3 cursor-pointer accent-lightBlue md:h-4 md:w-4 lg:h-5 lg:w-5'
                           checked={isAllChecked}
                           onChange={handleCheckAll}
                         />
                       </div>
-                      <div className='flex-grow text-black dark:text-white'>{t('cart:cart.product')}</div>
+                      <div className='flex-grow text-xs text-black dark:text-white md:text-sm lg:text-base'>
+                        {t('cart:cart.product')}
+                      </div>
                     </div>
                   </div>
 
-                  <div className='col-span-6'>
+                  <div className='col-span-8 md:col-span-7 lg:col-span-6'>
                     <div className='grid grid-cols-5 text-center dark:text-white'>
                       <div className='col-span-2'>{t('cart:cart.unit price')}</div>
                       <div className='col-span-1'>{t('cart:cart.quantity')}</div>
@@ -198,12 +200,12 @@ export default function Cart() {
                         key={purchase._id}
                         className='mb-5 grid grid-cols-12 rounded-sm border border-gray-200 bg-white px-4 py-5 text-center text-sm text-gray-500 first:mt-0 dark:border-blackSecond dark:bg-blackPrimary dark:text-white'
                       >
-                        <div className='col-span-6'>
+                        <div className='col-span-4 md:col-span-5 lg:col-span-6'>
                           <div className='flex'>
                             <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                               <input
                                 type='checkbox'
-                                className='h-5 w-5 cursor-pointer accent-lightBlue'
+                                className='h-3 w-3 cursor-pointer accent-lightBlue md:h-4 md:w-4 lg:h-5 lg:w-5'
                                 checked={purchase.checked}
                                 onChange={handleCheck(index)}
                               />
@@ -212,7 +214,7 @@ export default function Cart() {
                             <div className='flex-grow'>
                               <div className='flex'>
                                 <Link
-                                  className='h-20 w-20 flex-shrink-0'
+                                  className='md:h-18 md:w-18 h-16 w-16 flex-shrink-0 lg:h-20 lg:w-20'
                                   to={`${path.home}${generateNameId({
                                     name: purchase.product.name,
                                     id: purchase.product._id
@@ -227,7 +229,7 @@ export default function Cart() {
                                       name: purchase.product.name,
                                       id: purchase.product._id
                                     })}`}
-                                    className='ml-2 line-clamp-2 text-left'
+                                    className='ml-2 line-clamp-2 text-left text-xs md:text-sm lg:text-base'
                                   >
                                     {purchase.product.name}
                                   </Link>
@@ -237,7 +239,7 @@ export default function Cart() {
                           </div>
                         </div>
 
-                        <div className='col-span-6'>
+                        <div className='col-span-8 md:col-span-7 lg:col-span-6'>
                           <div className='grid grid-cols-5 items-center'>
                             <div className='col-span-2'>
                               <div className='flex items-center justify-center'>
@@ -252,7 +254,7 @@ export default function Cart() {
                               <QuantityController
                                 max={purchase.product.quantity}
                                 value={purchase.buy_count}
-                                classNameWrapper='flex items-center'
+                                classNameWrapper='flex items-center justify-center ml-4 md:ml-0'
                                 onIncrease={(value) => handleQuantity(index, value, value <= purchase.product.quantity)}
                                 onDecrease={(value) => handleQuantity(index, value, value >= 1)}
                                 onType={handleTypeQuantity(index)}
@@ -270,14 +272,14 @@ export default function Cart() {
                             </div>
 
                             <div className='col-span-1'>
-                              <span className='text-lightBlue'>
+                              <span className='ml-7 text-center text-lightBlue md:ml-0'>
                                 ₫{formatCurrency(purchase.product.price * purchase.buy_count)}
                               </span>
                             </div>
 
                             <div className='col-span-1'>
                               <button
-                                className='bg-none text-black transition-colors hover:text-lightBlue dark:text-white'
+                                className='ml-7 bg-none text-center text-xs text-black transition-colors hover:text-lightBlue dark:text-white md:ml-0 md:text-sm lg:text-base'
                                 onClick={handleDelete(index)}
                               >
                                 {t('cart:cart.delete')}
@@ -293,37 +295,45 @@ export default function Cart() {
             </div>
             <div className='sticky bottom-0 z-10 mt-8 flex flex-col rounded-md border border-gray-100 bg-white p-5 shadow-md dark:border-blackSecond dark:bg-blackPrimary sm:flex-row sm:items-center'>
               <div className='flex items-center'>
-                <div className='flex flex-shrink-0 items-center justify-center pr-3'>
+                <div className='flex flex-shrink-0 items-center justify-center pr-0 md:pr-2 lg:pr-3'>
                   <input
                     type='checkbox'
-                    className='h-5 w-5 cursor-pointer accent-lightBlue'
+                    className='h-3 w-3 cursor-pointer accent-lightBlue md:h-4 md:w-4 lg:h-5 lg:w-5'
                     checked={isAllChecked}
                     onChange={handleCheckAll}
                   />
                 </div>
-                <button className='mx-3 border-none bg-none dark:text-white' onClick={handleCheckAll}>
+                <button
+                  className='mx-3 border-none bg-none text-xs dark:text-white md:text-sm lg:text-base'
+                  onClick={handleCheckAll}
+                >
                   {t('cart:cart.select all')} ({extendedPurchases.length})
                 </button>
-                <button className='mx-3 border-none bg-none dark:text-white' onClick={handleDeleteManyPurchases}>
+                <button
+                  className='mx-3 border-none bg-none text-xs dark:text-white md:text-sm lg:text-base'
+                  onClick={handleDeleteManyPurchases}
+                >
                   {t('cart:cart.delete')}
                 </button>
               </div>
 
               <div className='mt-5 flex flex-col sm:ml-auto sm:mt-0 sm:flex-row sm:items-center'>
-                <div>
+                <div className='mr-4 md:mr-0'>
                   <div className='flex items-center sm:justify-end'>
-                    <div className='dark:text-white'>
+                    <div className='text-xs dark:text-white md:text-sm lg:text-base'>
                       {t('cart:cart.total')} ({checkedPurchasesCount} {t('cart:cart.item')}):
                     </div>
-                    <div className='ml-2 text-2xl text-lightBlue'>₫{formatCurrency(totalCheckedPurchasePrice)}</div>
+                    <div className='ml-2 text-lg text-lightBlue md:text-xl lg:text-2xl'>
+                      ₫{formatCurrency(totalCheckedPurchasePrice)}
+                    </div>
                   </div>
-                  <div className='flex items-center text-sm sm:justify-end'>
+                  <div className='flex items-center text-xs sm:justify-end md:text-sm lg:text-base'>
                     <div className='text-gray-500'>{t('cart:cart.saved')}</div>
                     <div className='ml-6 text-lightBlue'>₫{formatCurrency(totalCheckedPurchaseSavingPrice)}</div>
                   </div>
                 </div>
                 <Button
-                  className='mt-5 flex h-10 w-52 items-center justify-center bg-lightBlue text-sm uppercase text-white hover:bg-lightBlue/80 sm:ml-4 sm:mt-0'
+                  className='md:w-50 ml-auto mt-5 flex h-10 w-44 items-center justify-center bg-lightBlue text-xs uppercase text-white hover:bg-lightBlue/80 sm:mt-0 md:ml-4 md:text-sm lg:w-52'
                   onClick={handleBuyPurchases}
                   disabled={buyProductsMutation.isLoading}
                 >

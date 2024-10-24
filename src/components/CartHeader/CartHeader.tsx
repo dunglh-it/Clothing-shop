@@ -51,7 +51,7 @@ export default function CartHeader() {
               <div className='flex rounded-sm border-2 border-lightBlue'>
                 <input
                   type='text'
-                  className='w-full flex-grow border-none bg-transparent px-3 py-1 text-black outline-none dark:bg-blackSecond'
+                  className='w-full flex-grow border-none bg-transparent px-3 py-1 text-sm text-black outline-none dark:bg-blackSecond md:text-base'
                   placeholder={t('search for products')}
                   {...register('name')}
                 />
@@ -62,7 +62,7 @@ export default function CartHeader() {
                     viewBox='0 0 24 24'
                     strokeWidth={1.5}
                     stroke='currentColor'
-                    className='h-5 w-5 stroke-white'
+                    className='h-4 w-4 stroke-white md:h-5 md:w-5'
                   >
                     <path
                       strokeLinecap='round'

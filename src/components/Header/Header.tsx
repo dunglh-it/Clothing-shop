@@ -91,7 +91,7 @@ export default function Header() {
   }
 
   return (
-    <div className='sticky top-0 z-50 bg-[#d2f5f5] px-2 shadow-md dark:bg-[#171C28]'>
+    <div className='bg-[#d2f5f5] px-2 shadow-md dark:bg-[#171C28]'>
       <div className='container'>
         <NavHeader />
 
@@ -257,7 +257,13 @@ export default function Header() {
                     </div>
                   }
                 >
-                  <Link to='/' className='relative flex w-full items-center justify-end pr-2'>
+                  <Link
+                    to='/'
+                    className='relative flex w-full items-center justify-end pr-2'
+                    onClick={(e) => {
+                      e.preventDefault()
+                    }}
+                  >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       fill='none'
