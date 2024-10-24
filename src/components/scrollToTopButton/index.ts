@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
-import ScrollToTopButton from './scrollToTopButton'
+import ScrollToTopButton from './ScrollToTopButton'
 
 export default ScrollToTopButton
