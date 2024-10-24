@@ -47,7 +47,7 @@ export default function UserSideNav() {
         </div>
       </div>
 
-      <div className='mt-5 flex items-center gap-12 md:mt-6 md:flex-col md:items-start md:gap-0 lg:mt-7'>
+      <div className='mt-4 flex items-center gap-12 md:mt-6 md:flex-col md:items-start md:gap-0 lg:mt-7'>
         <Link
           to={path.profile}
           className='flex items-center text-xs capitalize transition-colors dark:text-gray-400 md:text-sm lg:text-base'
