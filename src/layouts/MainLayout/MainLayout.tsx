@@ -14,8 +14,8 @@ function MainLayoutInner({ children }: Props) {
       <Header />
       {children}
       <Outlet />
-      <Footer />
       <ScrollToTopButton />
+      <Footer />
     </div>
   )
 }
