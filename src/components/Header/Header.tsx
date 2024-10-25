@@ -98,10 +98,10 @@ export default function Header() {
         <div className='mt-4 grid grid-cols-12 items-center gap-3 pb-4 md:gap-12 md:pb-6'>
           {isSearchOpen ? (
             <div className='relative col-span-12'>
-              <form className='mr-12 flex justify-between' onSubmit={onSubmitSearch}>
+              <form className='mr-12 flex max-w-full justify-between' onSubmit={onSubmitSearch}>
                 <input
                   type='text'
-                  className='flex-grow border-none bg-white px-3 py-2 text-black outline-none dark:bg-[#292E39] dark:text-white'
+                  className='w-full flex-grow border-none bg-white px-3 py-2 text-black outline-none dark:bg-[#292E39] dark:text-white'
                   placeholder={t('search for products')}
                   {...register('name')}
                 />
