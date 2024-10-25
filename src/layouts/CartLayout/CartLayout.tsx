@@ -1,6 +1,5 @@
 import CartHeader from 'src/components/CartHeader'
 import Footer from 'src/components/Footer'
-import ScrollToTopButton from 'src/components/ScrollToTopButton'
 
 interface Props {
   children?: React.ReactNode
@@ -12,7 +11,6 @@ export default function CartLayout({ children }: Props) {
         <CartHeader />
         {children}
         <Footer />
-        <ScrollToTopButton />
       </div>
     </div>
   )
