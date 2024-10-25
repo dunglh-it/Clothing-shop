@@ -12,7 +12,7 @@ const slides = [
 
   {
     id: 2,
-    image: Slide3,
+    image: Slide2,
     alt: 'Slide 2'
   },
 
