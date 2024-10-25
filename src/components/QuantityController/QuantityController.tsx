@@ -77,7 +77,7 @@ export default function QuantityController({
       <InputNumber
         className=''
         classNameError='hidden'
-        classNameInput='md:h-7 md:w-12 h-6 w-10 lg:h-8 lg:w-14 border-t border-b border-gray-300 p-1 text-center outline-none dark:border-blackSecond dark:bg-blackSecond dark:text-white'
+        classNameInput='md:h-7 md:w-12 h-6 w-10 lg:h-8 lg:w-14 border-t border-b border-gray-300 p-1 text-center outline-none dark:border-blackSecond dark:bg-blackSecond dark:text-white text-xs md:text-sm lg:text-base'
         onChange={handleChange}
         onBlur={handleBlur}
         value={value || localValue}

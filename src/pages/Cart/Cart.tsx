@@ -183,7 +183,7 @@ export default function Cart() {
                     </div>
                   </div>
 
-                  <div className='col-span-8 md:col-span-7 lg:col-span-6'>
+                  <div className='col-span-8 text-xs md:col-span-7 md:text-sm lg:col-span-6 lg:text-base'>
                     <div className='grid grid-cols-5 text-center dark:text-white'>
                       <div className='col-span-2'>{t('cart:cart.unit price')}</div>
                       <div className='col-span-1'>{t('cart:cart.quantity')}</div>
@@ -242,7 +242,7 @@ export default function Cart() {
                         <div className='col-span-8 md:col-span-7 lg:col-span-6'>
                           <div className='grid grid-cols-5 items-center'>
                             <div className='col-span-2'>
-                              <div className='flex items-center justify-center'>
+                              <div className='flex items-center justify-center text-xs md:text-sm lg:text-base'>
                                 <span className='text-gray-300 line-through'>
                                   ₫{formatCurrency(purchase.product.price_before_discount)}
                                 </span>
@@ -272,7 +272,7 @@ export default function Cart() {
                             </div>
 
                             <div className='col-span-1'>
-                              <span className='ml-7 text-center text-lightBlue md:ml-0'>
+                              <span className='ml-7 text-center text-xs text-lightBlue md:ml-0 md:text-sm lg:text-base'>
                                 ₫{formatCurrency(purchase.product.price * purchase.buy_count)}
                               </span>
                             </div>

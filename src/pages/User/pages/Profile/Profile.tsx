@@ -29,7 +29,7 @@ function Info() {
   return (
     <Fragment>
       <div className='mt-6 flex flex-col flex-wrap sm:flex-row'>
-        <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:pt-1 md:text-sm lg:pt-3 lg:text-base'>
+        <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:mt-[8px] md:pt-1 md:text-sm lg:mt-0 lg:pt-3 lg:text-base'>
           {t('my account info.name')}
         </div>
         <div className='sm:w-[80%] sm:pl-5'>
@@ -43,7 +43,7 @@ function Info() {
         </div>
       </div>
       <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-        <div className='md:pt-1text-xs mb-2 truncate pt-0 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:text-sm lg:pt-3 lg:text-base'>
+        <div className='md:pt-1text-xs mb-2 truncate pt-0 capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:mt-[10px] md:text-sm lg:mt-0 lg:pt-3 lg:text-base'>
           {t('my account info.phone number')}
         </div>
         <div className='sm:w-[80%] sm:pl-5'>
@@ -191,7 +191,7 @@ export default function Profile() {
               </div>
 
               <div className='sm:w-[80%] sm:pl-5'>
-                <div className='rounded-sm border px-3 py-2 pt-1 text-xs text-gray-700 dark:bg-blackSecond dark:text-gray-400 md:text-sm lg:text-base'>
+                <div className='rounded-sm border px-3 py-2 text-xs text-gray-700 dark:bg-blackSecond dark:text-gray-400 md:mt-[-10px] md:text-sm lg:mt-0 lg:text-base'>
                   {profile?.email}
                 </div>
               </div>
@@ -203,9 +203,10 @@ export default function Profile() {
               <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:pt-1  md:text-sm lg:pt-3 lg:text-base'>
                 {t('my account info.address')}
               </div>
+
               <div className='sm:w-[80%] sm:pl-5'>
                 <Input
-                  classNameInput='w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 dark:bg-blackSecond dark:text-gray-400 dark:border-blackSecond focus:shadow-sm text-xs md:text-sm lg:text-base'
+                  classNameInput='md:mt-[-6px] lg:mt-0 w-full rounded-sm border border-gray-300 px-3 py-2 outline-none focus:border-gray-500 dark:bg-blackSecond dark:text-gray-400 dark:border-blackSecond focus:shadow-sm text-xs md:text-sm lg:text-base'
                   register={register}
                   name='address'
                   placeholder={t('my account info.address')}

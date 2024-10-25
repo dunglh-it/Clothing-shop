@@ -40,7 +40,7 @@ export default function DateSelect({ value, onChange, errorMessage }: Props) {
 
   return (
     <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-      <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:pt-1 md:text-sm lg:pt-3 lg:text-base'>
+      <div className='mb-2 truncate pt-0 text-xs capitalize dark:text-gray-400 sm:w-[20%] sm:text-right md:mb-0 md:mt-[8px] md:pt-1 md:text-sm lg:mt-0 lg:pt-3 lg:text-base'>
         {t('my account info.date of birth')}
       </div>
       <div className='sm:w-[80%] sm:pl-5'>
