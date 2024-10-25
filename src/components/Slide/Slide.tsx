@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react'
+import Slide1 from 'src/assets/images/slide-1.jpg'
+import Slide2 from 'src/assets/images/slide-2.jpg'
+import Slide3 from 'src/assets/images/slide-3.jpg'
 
 const slides = [
   {
     id: 1,
-    image: 'src/assets/images/slide-1.jpg',
+    image: Slide1,
     alt: 'Slide 1'
   },
 
   {
     id: 2,
-    image: 'src/assets/images/slide-2.jpg',
+    image: Slide3,
     alt: 'Slide 2'
   },
 
   {
     id: 3,
-    image: 'src/assets/images/slide-3.jpg',
+    image: Slide3,
     alt: 'Slide 3'
   }
 ]
