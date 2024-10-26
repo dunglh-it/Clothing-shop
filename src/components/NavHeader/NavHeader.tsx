@@ -61,7 +61,7 @@ export default function NavHeader() {
     <div className='flex justify-end pt-3'>
       <div className='flex cursor-pointer items-center hover:opacity-75'>
         <button
-          className='rounded-full border bg-white px-2 py-2 text-black shadow-sm hover:border hover:border-white hover:bg-lightBlue hover:text-white dark:bg-black/50 dark:text-white'
+          className='rounded-full border bg-white px-2 py-2 text-black shadow-sm hover:border hover:border-white hover:bg-lightBlue hover:text-white focus:bg-white dark:bg-black/50 dark:text-white dark:focus:bg-black/50'
           onClick={toggleTheme}
           title={isDarkMode ? `${t('dark')} ` : `${t('light')}`}
         >
